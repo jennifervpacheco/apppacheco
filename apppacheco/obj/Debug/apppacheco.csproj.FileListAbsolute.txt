@@ -1,0 +1,17 @@
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\bin\Debug\apppacheco.exe.config
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\bin\Debug\apppacheco.exe
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\bin\Debug\apppacheco.pdb
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.csprojResolveAssemblyReference.cache
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.Form1.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.Properties.Resources.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.csproj.GenerateResource.Cache
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.exe
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.pdb
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.Registro.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.IniciarAsamblea.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.OpcionesAsamblea.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\bin\Debug\itextsharp.dll
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\bin\Debug\itextsharp.xml
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.GenerarCodigo.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.RegistroFinal.resources
+c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.Votacion.resources
