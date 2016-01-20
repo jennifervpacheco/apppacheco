@@ -21,5 +21,10 @@ namespace apppacheco
         {
             this.Close();
         }
+
+        private void RegistroFinal_Load(object sender, EventArgs e)
+        {
+            ConexionPostgres conn = new ConexionPostgres();
+        }
     }
 }

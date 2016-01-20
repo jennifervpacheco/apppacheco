@@ -49,6 +49,7 @@
             this.Controls.Add(this.button1);
             this.Name = "RegistroFinal";
             this.Text = "RegistroFinal";
+            this.Load += new System.EventHandler(this.RegistroFinal_Load);
             this.ResumeLayout(false);
 
         }

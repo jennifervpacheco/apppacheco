@@ -28,7 +28,7 @@ namespace apppacheco
 
         private void Registro_Load(object sender, EventArgs e)
         {
-
+            ConexionPostgres conn = new ConexionPostgres();
         }
     }
 }

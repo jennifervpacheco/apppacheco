@@ -69,6 +69,7 @@
             this.Controls.Add(this.button1);
             this.Name = "Votacion";
             this.Text = "Votacion";
+            this.Load += new System.EventHandler(this.Votacion_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

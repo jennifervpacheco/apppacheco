@@ -15,3 +15,23 @@ c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\bin\
 c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.GenerarCodigo.resources
 c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.RegistroFinal.resources
 c:\users\lenovo\documents\visual studio 2015\Projects\apppacheco\apppacheco\obj\Debug\apppacheco.Votacion.resources
+C:\Users\lenovo\workspace\apppacheco\apppacheco\bin\Debug\apppacheco.exe.config
+C:\Users\lenovo\workspace\apppacheco\apppacheco\obj\Debug\apppacheco.csproj.ResolveComReference.cache
+C:\Users\lenovo\workspace\apppacheco\apppacheco\obj\Debug\apppacheco.exe
+C:\Users\lenovo\workspace\apppacheco\apppacheco\obj\Debug\apppacheco.pdb
+C:\Users\lenovo\workspace\apppacheco\apppacheco\obj\Debug\apppacheco.csprojResolveAssemblyReference.cache
+C:\Users\lenovo\workspace\apppacheco\apppacheco\obj\Debug\apppacheco.GenerarCodigo.resources
+C:\Users\lenovo\workspace\apppacheco\apppacheco\obj\Debug\apppacheco.Registro.resources
+C:\Users\lenovo\workspace\apppacheco\apppacheco\obj\Debug\apppacheco.Form1.resources
+C:\Users\lenovo\workspace\apppacheco\apppacheco\obj\Debug\apppacheco.IniciarAsamblea.resources
+C:\Users\lenovo\workspace\apppacheco\apppacheco\obj\Debug\apppacheco.OpcionesAsamblea.resources
+C:\Users\lenovo\workspace\apppacheco\apppacheco\obj\Debug\apppacheco.Properties.Resources.resources
+C:\Users\lenovo\workspace\apppacheco\apppacheco\obj\Debug\apppacheco.RegistroFinal.resources
+C:\Users\lenovo\workspace\apppacheco\apppacheco\obj\Debug\apppacheco.Votacion.resources
+C:\Users\lenovo\workspace\apppacheco\apppacheco\obj\Debug\apppacheco.csproj.GenerateResource.Cache
+C:\Users\lenovo\workspace\apppacheco\apppacheco\bin\Debug\apppacheco.exe
+C:\Users\lenovo\workspace\apppacheco\apppacheco\bin\Debug\apppacheco.pdb
+C:\Users\lenovo\workspace\apppacheco\apppacheco\bin\Debug\itextsharp.dll
+C:\Users\lenovo\workspace\apppacheco\apppacheco\bin\Debug\Npgsql.dll
+C:\Users\lenovo\workspace\apppacheco\apppacheco\bin\Debug\itextsharp.xml
+C:\Users\lenovo\workspace\apppacheco\apppacheco\bin\Debug\Npgsql.xml

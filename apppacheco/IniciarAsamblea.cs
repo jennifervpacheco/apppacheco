@@ -32,5 +32,10 @@ namespace apppacheco
             OpcionesAsamblea miformulario = new OpcionesAsamblea();
             miformulario.Show();
         }
+
+        private void IniciarAsamblea_Load(object sender, EventArgs e)
+        {
+            ConexionPostgres conn = new ConexionPostgres();
+        }
     }
 }

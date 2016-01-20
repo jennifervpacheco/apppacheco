@@ -39,5 +39,10 @@ namespace apppacheco
             RegistroFinal mformulario = new RegistroFinal();
             mformulario.Show();
         }
+
+        private void OpcionesAsamblea_Load(object sender, EventArgs e)
+        {
+            ConexionPostgres conn = new ConexionPostgres();
+        }
     }
 }

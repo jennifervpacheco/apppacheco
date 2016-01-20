@@ -48,18 +48,29 @@ namespace apppacheco
             Console.WriteLine(size); // <-- Shows file size in debugging mode.
             Console.WriteLine(result); // <-- For debugging use.
                                        // Load Excel file.
-            var workbook = ExcelFile.Load();
+            //var workbook = ExcelFile.Load();
 
             // Select active worksheet.
-            var worksheet = workbook.Worksheets.ActiveWorksheet;
+            //var worksheet = workbook.Worksheets.ActiveWorksheet;
 
             // Display the value of first cell in MessageBox.
-            MessageBox.Show(worksheet.Cells["A1"].GetFormattedValue());
+            //MessageBox.Show(worksheet.Cells["A1"].GetFormattedValue());
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            ConexionPostgres conn = new ConexionPostgres();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            GenerarCodigo cod = new GenerarCodigo();
+            cod.Show();
         }
     }
 }
