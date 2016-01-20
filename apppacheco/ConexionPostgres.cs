@@ -14,7 +14,7 @@ namespace apppacheco
     {
         private DataSet ds = new DataSet();
         private DataTable dt = new DataTable();
-        private List<List<KeyValuePair<string, string>>> filas = new List<List<KeyValuePair<string, string>>>();
+        private List<Dictionary<string, string>> filas = new List<Dictionary<string, string>>();
         // PostgeSQL-style connection string
         private string connstring = String.Format(
             "Server={0};" +
@@ -27,32 +27,29 @@ namespace apppacheco
             "postgres",
             "postgres",
             "apppacheco");
-        public List<List<KeyValuePair<string, string>>> consultar(string sql)
+        public List<Dictionary<string,string>> consultar(string sql)
         {
             try
             {
                 // Making connection with Npgsql provider
                 NpgsqlConnection conn = new NpgsqlConnection(this.connstring);
-
                 conn.Open();
                 using (var cmd = new NpgsqlCommand())
                 {
                     cmd.Connection = conn;
-
                     // Insert some data
                     //cmd.CommandText = "INSERT INTO data (some_field) VALUES ('Hello world')";
                     //cmd.ExecuteNonQuery();
-
                     // Retrieve all rows
                     cmd.CommandText = sql;
                     using (var reader = cmd.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            List<KeyValuePair<string, string>> columnas = new List<KeyValuePair<string, string>>();
+                            Dictionary<string,string> columnas = new Dictionary<string, string>();
                             for (int i = 0; i < reader.FieldCount; i++)
                             {
-                                columnas.Add(new KeyValuePair<string, string>(reader.GetName(i), reader[i].ToString()));
+                                columnas.Add(reader.GetName(i), reader[i].ToString());
                             }
                             filas.Add(columnas);
                         }
@@ -65,7 +62,6 @@ namespace apppacheco
                 // something went wrong, and you wanna know why
                 Console.WriteLine(msg.ToString());
             }
-
             return this.filas;
         }
 
@@ -75,7 +71,6 @@ namespace apppacheco
             {
                 // Making connection with Npgsql provider
                 NpgsqlConnection conn = new NpgsqlConnection(this.connstring);
-
                 conn.Open();
                 using (var cmd = new NpgsqlCommand())
                 {

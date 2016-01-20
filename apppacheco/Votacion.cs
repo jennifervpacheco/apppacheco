@@ -27,7 +27,7 @@ namespace apppacheco
             ConexionPostgres conn = new ConexionPostgres();
             var resultado = conn.consultar("SELECT * FROM modelo.propiedad_horizontal");
             string valores = "";
-            foreach (List<KeyValuePair<string, string>> fila in resultado)
+            foreach (Dictionary<string,string> fila in resultado)
             {
                 //valores += string.Join(",", fila.ToArray());
                 valores += "{";
@@ -37,10 +37,7 @@ namespace apppacheco
                 }
                 valores += "},\n";
             }
-
             MessageBox.Show("El resultado de la primera consulta es: \n" + valores);
-
-
             var nit = "13623";
             var cadenaSql = " INSERT INTO modelo.propiedad_horizontal";
             cadenaSql += " (";
@@ -55,10 +52,8 @@ namespace apppacheco
             cadenaSql += " '200'";
             cadenaSql += " )";
             var resultado2 = conn.registrar(cadenaSql);
-
             var mensaje = (resultado2) ? "Exitoso" : "No exitoso";
             MessageBox.Show("El resultado del registro fue: " + mensaje);
         }
     }
-    
 }

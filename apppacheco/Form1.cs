@@ -47,12 +47,10 @@ namespace apppacheco
            // MessageBox.Show(result.ToString);
             Console.WriteLine(size); // <-- Shows file size in debugging mode.
             Console.WriteLine(result); // <-- For debugging use.
-                                       // Load Excel file.
+            // Load Excel file.
             //var workbook = ExcelFile.Load();
-
             // Select active worksheet.
             //var worksheet = workbook.Worksheets.ActiveWorksheet;
-
             // Display the value of first cell in MessageBox.
             //MessageBox.Show(worksheet.Cells["A1"].GetFormattedValue());
         }
