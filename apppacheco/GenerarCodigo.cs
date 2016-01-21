@@ -51,7 +51,7 @@ namespace apppacheco
                 }
                 using (MemoryStream Mmst = new MemoryStream())
                 {
-                  bitm.Save("ms", ImageFormat.Jpeg);
+                  bitm.Save("ms"+ "-" + fila["numero_unidad"], ImageFormat.Jpeg);
                   pictureBox1.Image = bitm;
                   pictureBox1.Width = bitm.Width;
                   pictureBox1.Height = bitm.Height;
