@@ -63,14 +63,15 @@ namespace apppacheco
 
             excelReader.IsFirstRowAsColumnNames = true;
             DataSet columnnames = excelReader.AsDataSet();
-
+            ConexionPostgres conn = new ConexionPostgres();
 
             foreach (DataRow row in result.Tables[0].Rows.Cast<DataRow>().Skip(1))
             {
                 foreach (var value in row.ItemArray)
                 {
                     //MessageBox.Show(value.ToString());
-                    //var cadenaSql = "INSERT INTO modelo.unidad_residencial(nit, numero_unidad, nombre_completo, coeficiente, documento) values ('" + row.ItemArray[0] + "','" + row.ItemArray[1] + "','" + row.ItemArray[2] + "','" + row.ItemArray[3] + "','" + row.ItemArray[4]"');";
+                     var cadenaSql = "INSERT INTO modelo.unidad_residencial(nit, numero_unidad, nombre_completo, coeficiente, documento) values ('" + row.ItemArray[0] + "','" + row.ItemArray[1] + "','" + row.ItemArray[2] + "','" + row.ItemArray[3] + "','" + row.ItemArray[4]+"');";
+                    conn.registrar(cadenaSql);
                     //if (cadenaSql.=true)
                     //{
                       //  MessageBox.Show("carga exitosa");
@@ -89,7 +90,7 @@ namespace apppacheco
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            ConexionPostgres conn = new ConexionPostgres();
+           
         }
 
         private void button4_Click(object sender, EventArgs e)
