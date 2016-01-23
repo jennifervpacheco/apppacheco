@@ -55,6 +55,10 @@
       <HintPath>..\packages\PDFsharp-MigraDoc-GDI.1.32.4334.0\lib\net20\MigraDoc.RtfRendering.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Npgsql, Version=3.0.5.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.3.0.5\lib\net45\Npgsql.dll</HintPath>
       <Private>True</Private>
@@ -87,6 +91,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConexionPostgres.cs" />
+    <Compile Include="ConfiguracionServidorBaseDatos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfiguracionServidorBaseDatos.Designer.cs">
+      <DependentUpon>ConfiguracionServidorBaseDatos.cs</DependentUpon>
+    </Compile>
     <Compile Include="GenerarCodigo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,6 +149,9 @@
     <Compile Include="Votacion.Designer.cs">
       <DependentUpon>Votacion.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ConfiguracionServidorBaseDatos.resx">
+      <DependentUpon>ConfiguracionServidorBaseDatos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="GenerarCodigo.resx">
       <DependentUpon>GenerarCodigo.cs</DependentUpon>
     </EmbeddedResource>

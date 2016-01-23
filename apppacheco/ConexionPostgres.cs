@@ -6,33 +6,43 @@
 using System.Data;
 using Npgsql;
 using System.Collections.Generic;
-
+//Para leer escribir archivo JSON
+using Newtonsoft.Json;
+using System.IO;
+using System.Text;
 
 namespace apppacheco
 {
     class ConexionPostgres
     {
+        private string archivoConfiguracion = "config/servidor.json";
         private DataSet ds = new DataSet();
         private DataTable dt = new DataTable();
         private List<Dictionary<string, string>> filas = new List<Dictionary<string, string>>();
         // PostgeSQL-style connection string
-        private string connstring = String.Format(
+        private string getConnString() {
+            StreamReader r = new StreamReader(this.archivoConfiguracion, Encoding.Default, true);
+            string json = r.ReadToEnd();
+            r.Close();
+            dynamic array = JsonConvert.DeserializeObject(json);
+            return String.Format(
             "Server={0};" +
             "Port={1};" +
             "User Id={2};" +
             "Password={3};" +
             "Database={4};",
-            "127.0.0.1",
-            "5432",
-            "postgres",
-            "postgres",
-            "apppacheco");
+            array["ip"],
+            array["puerto"],
+            array["usuario"],
+            array["clave"],
+            array["basededatos"]);
+        }
         public List<Dictionary<string,string>> consultar(string sql)
         {
             try
             {
                 // Making connection with Npgsql provider
-                NpgsqlConnection conn = new NpgsqlConnection(this.connstring);
+                NpgsqlConnection conn = new NpgsqlConnection(this.getConnString());
                 conn.Open();
                 using (var cmd = new NpgsqlCommand())
                 {
@@ -70,7 +80,7 @@ namespace apppacheco
             try
             {
                 // Making connection with Npgsql provider
-                NpgsqlConnection conn = new NpgsqlConnection(this.connstring);
+                NpgsqlConnection conn = new NpgsqlConnection(this.getConnString());
                 conn.Open();
                 using (var cmd = new NpgsqlCommand())
                 {
