@@ -83,7 +83,7 @@ namespace apppacheco
 
             pdfDocumentRenderer.Document = document;
             pdfDocumentRenderer.RenderDocument();
-            string filename = "C:\\Users\\lenovo\\workspace\\apppacheco\\pdf.pdf";
+            string filename = "archivopdf\\pdf.pdf";
             pdfDocumentRenderer.PdfDocument.Save(filename);
             return filename;
 

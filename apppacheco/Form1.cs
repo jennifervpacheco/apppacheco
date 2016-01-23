@@ -78,13 +78,21 @@ namespace apppacheco
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             GenerarCodigo cod = new GenerarCodigo();
             cod.Show();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            OpcionesAsamblea op = new OpcionesAsamblea();
+            op.Show();
         }
     }
 }

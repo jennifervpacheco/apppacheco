@@ -93,6 +93,12 @@
     <Compile Include="GenerarCodigo.Designer.cs">
       <DependentUpon>GenerarCodigo.cs</DependentUpon>
     </Compile>
+    <Compile Include="OpcionesAsamblea.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OpcionesAsamblea.Designer.cs">
+      <DependentUpon>OpcionesAsamblea.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pdf.cs" />
     <Compile Include="Registro.cs">
       <SubType>Form</SubType>
@@ -112,11 +118,11 @@
     <Compile Include="IniciarAsamblea.Designer.cs">
       <DependentUpon>IniciarAsamblea.cs</DependentUpon>
     </Compile>
-    <Compile Include="OpcionesAsamblea.cs">
+    <Compile Include="Pregunta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="OpcionesAsamblea.Designer.cs">
-      <DependentUpon>OpcionesAsamblea.cs</DependentUpon>
+    <Compile Include="Pregunta.Designer.cs">
+      <DependentUpon>Pregunta.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -136,6 +142,9 @@
     <EmbeddedResource Include="GenerarCodigo.resx">
       <DependentUpon>GenerarCodigo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="OpcionesAsamblea.resx">
+      <DependentUpon>OpcionesAsamblea.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Registro.resx">
       <DependentUpon>Registro.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,8 +154,8 @@
     <EmbeddedResource Include="IniciarAsamblea.resx">
       <DependentUpon>IniciarAsamblea.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="OpcionesAsamblea.resx">
-      <DependentUpon>OpcionesAsamblea.cs</DependentUpon>
+    <EmbeddedResource Include="Pregunta.resx">
+      <DependentUpon>Pregunta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -163,6 +172,7 @@
     <EmbeddedResource Include="Votacion.resx">
       <DependentUpon>Votacion.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

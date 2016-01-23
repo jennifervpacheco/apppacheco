@@ -35,15 +35,15 @@ namespace apppacheco
             ConexionPostgres conn = new ConexionPostgres();
             var cadenaSql = "INSERT INTO modelo.asamblea(nit, nombre, fecha, ) values ('" + nit.Text + "','" + nombrePropiedad.Text + "','" + numunidades.Text + "');";
             conn.registrar(cadenaSql);
-
-
-            OpcionesAsamblea miformulario = new OpcionesAsamblea();
-            miformulario.Show();
+            
         }
 
 
         private void IniciarAsamblea_Load(object sender, EventArgs e)
         {
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             ConexionPostgres conn = new ConexionPostgres();
             var resultado = conn.consultar("SELECT * FROM modelo.tipo_asamblea; ");
 
@@ -68,5 +68,16 @@ namespace apppacheco
             
 
          }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Pregunta miformulario = new Pregunta();
+            miformulario.Show();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

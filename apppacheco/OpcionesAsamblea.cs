@@ -17,32 +17,34 @@ namespace apppacheco
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void OpcionesAsamblea_Load(object sender, EventArgs e)
         {
-            Votacion mmformulario = new Votacion();
-            mmformulario.Show();
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            Registro miformilario = new Registro();
-            miformilario.Show();
+            Registro re = new Registro();
+            re.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Close();
+            RegistroFinal refi = new RegistroFinal();
+            refi.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            RegistroFinal mformulario = new RegistroFinal();
-            mformulario.Show();
+            Votacion vo = new Votacion();
+            vo.Show();
         }
 
-        private void OpcionesAsamblea_Load(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-            ConexionPostgres conn = new ConexionPostgres();
+            this.Close();
         }
     }
 }

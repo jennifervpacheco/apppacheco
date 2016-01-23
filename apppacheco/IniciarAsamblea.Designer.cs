@@ -45,13 +45,14 @@
             this.button4 = new System.Windows.Forms.Button();
             this.horafinal = new System.Windows.Forms.TextBox();
             this.horaasamblea = new System.Windows.Forms.TextBox();
-            this.fechaasamblea = new System.Windows.Forms.TextBox();
             this.nombreasamblea = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -65,6 +66,7 @@
             this.pictureBox2.Size = new System.Drawing.Size(396, 134);
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
             // 
             // groupBox1
             // 
@@ -152,7 +154,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(570, 486);
+            this.button2.Location = new System.Drawing.Point(572, 520);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 8;
@@ -162,11 +164,11 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Controls.Add(this.tipoasambleabix);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.horafinal);
             this.groupBox2.Controls.Add(this.horaasamblea);
-            this.groupBox2.Controls.Add(this.fechaasamblea);
             this.groupBox2.Controls.Add(this.nombreasamblea);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
@@ -213,13 +215,6 @@
             this.horaasamblea.Size = new System.Drawing.Size(100, 20);
             this.horaasamblea.TabIndex = 7;
             // 
-            // fechaasamblea
-            // 
-            this.fechaasamblea.Location = new System.Drawing.Point(163, 72);
-            this.fechaasamblea.Name = "fechaasamblea";
-            this.fechaasamblea.Size = new System.Drawing.Size(100, 20);
-            this.fechaasamblea.TabIndex = 6;
-            // 
             // nombreasamblea
             // 
             this.nombreasamblea.Location = new System.Drawing.Point(163, 31);
@@ -254,15 +249,6 @@
             this.label7.TabIndex = 2;
             this.label7.Text = "Hora de inicio";
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 79);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Fecha:";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -272,11 +258,38 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "Nombre:";
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(552, 491);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(126, 23);
+            this.button3.TabIndex = 11;
+            this.button3.Text = "Registrar pregunta";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(24, 79);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Fecha:";
+            // 
+            // dateTimePicker1
+            // 
+            this.dateTimePicker1.Location = new System.Drawing.Point(163, 72);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePicker1.TabIndex = 12;
+            // 
             // IniciarAsamblea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1119, 521);
+            this.ClientSize = new System.Drawing.Size(1119, 555);
+            this.Controls.Add(this.button3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label1);
@@ -312,12 +325,13 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox horafinal;
         private System.Windows.Forms.TextBox horaasamblea;
-        private System.Windows.Forms.TextBox fechaasamblea;
         private System.Windows.Forms.TextBox nombreasamblea;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.Label label6;
     }
 }

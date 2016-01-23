@@ -24,7 +24,9 @@ namespace apppacheco
 
         private void RegistroFinal_Load(object sender, EventArgs e)
         {
-            ConexionPostgres conn = new ConexionPostgres();
+            this.TopMost = true;
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

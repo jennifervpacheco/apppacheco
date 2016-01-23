@@ -27,8 +27,7 @@ namespace apppacheco
 
         private void GenerarCodigo_Load(object sender, EventArgs e)
         {
-            pictureBox1.Font = new Font("IDAutomationHC39M", 12, FontStyle.Regular);
-            //label1.Font = new Font("IDAutomationHC39M", 12, FontStyle.Regular);
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -53,18 +52,15 @@ namespace apppacheco
 
                 using (MemoryStream Mmst = new MemoryStream())
                 {
-                    string nombreImagen = fila["nit"] + "-" + fila["numero_unidad"] + ".png";
+                    string nombreImagen = "ImagenesBarras\\"+ fila["nit"] + "-" + fila["numero_unidad"] + ".png";
                     bitm.Save(nombreImagen, ImageFormat.Jpeg);
-                    pictureBox1.Image = bitm;
-                    pictureBox1.Width = bitm.Width;
-                    pictureBox1.Height = bitm.Height;
-                }
+                 }
             }
             string[] fotos = new string[resultado.ToArray().Length];
             for (int indice = 0; indice < resultado.ToArray().Length; indice++)
             {
                 Dictionary<string, string> fila = resultado.ToArray()[indice];
-                fotos[indice] = "C:\\Users\\lenovo\\workspace\\apppacheco\\apppacheco\\bin\\Debug\\" + fila["nit"] + "-" + fila["numero_unidad"] + ".png";
+                fotos[indice] = "ImagenesBarras\\" + fila["nit"] + "-" + fila["numero_unidad"] + ".png";
 
             }
             Pdf documentoPdf = new Pdf();
