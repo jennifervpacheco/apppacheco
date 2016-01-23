@@ -94,5 +94,11 @@ namespace apppacheco
             OpcionesAsamblea op = new OpcionesAsamblea();
             op.Show();
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            ConfiguracionServidorBaseDatos ser = new ConfiguracionServidorBaseDatos();
+            ser.Show();
+        }
     }
 }
