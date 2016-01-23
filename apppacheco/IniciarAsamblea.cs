@@ -33,7 +33,7 @@ namespace apppacheco
         private void button4_Click(object sender, EventArgs e)
         {
             ConexionPostgres conn = new ConexionPostgres();
-            var cadenaSql = "INSERT INTO modelo.asamblea(nit, nombre, fecha, tiempo_inicial, tiempo_final, id_tipo_asamblea) VALUES('123456789', 'asamblea ordinaria villa amparo', '2016-01-23', '12:31', '00:00', '2'); ";
+            var cadenaSql = "INSERT INTO modelo.asamblea(nit, nombre, fecha, tiempo_inicial, tiempo_final, id_tipo_asamblea) VALUES('987654321', 'asamblea ordinaria villa amparo', '2016-01-23', '12:31', '00:00', '2'); ";
             conn.registrar(cadenaSql);
             
         }
