@@ -29,35 +29,48 @@ namespace apppacheco
         {
             pictureBox1.Font = new Font("IDAutomationHC39M", 12, FontStyle.Regular);
             //label1.Font = new Font("IDAutomationHC39M", 12, FontStyle.Regular);
-        } 
+        }
 
         private void button2_Click(object sender, EventArgs e)
-        { 
+        {
             ConexionPostgres conn = new ConexionPostgres();
-            var resultado= conn.consultar("SELECT * FROM modelo.unidad_residencial WHERE nit = '12345'; ");
-            foreach (Dictionary<string,string> fila in resultado)
+            string nit = Nit.Text;
+            var resultado = conn.consultar("SELECT * FROM modelo.unidad_residencial WHERE nit = '"+nit+"'; ");
+            foreach (Dictionary<string, string> fila in resultado)
             {
-                var codigo = fila["nit"]+"-" + fila["numero_unidad"];
+                var codigo = fila["nit"] + "-" + fila["numero_unidad"];
                 string barcode = codigo;
                 Bitmap bitm = new Bitmap(barcode.Length * 45, 160);
                 using (Graphics graphic = Graphics.FromImage(bitm))
                 {
-                  Font newfont = new Font("IDAutomationHC39M", 20);
-                  PointF point = new PointF(2f, 2f);
-                  SolidBrush black = new SolidBrush(Color.Black);
-                  SolidBrush white = new SolidBrush(Color.White);
-                  graphic.FillRectangle(white, 0, 0, bitm.Width, bitm.Height);
-                  graphic.DrawString("*" + barcode + "*", newfont, black, point);
+                    Font newfont = new Font("IDAutomationHC39M", 20);
+                    PointF point = new PointF(2f, 2f);
+                    SolidBrush black = new SolidBrush(Color.Black);
+                    SolidBrush white = new SolidBrush(Color.White);
+                    graphic.FillRectangle(white, 0, 0, bitm.Width, bitm.Height);
+                    graphic.DrawString("*" + barcode + "*", newfont, black, point);
                 }
+
                 using (MemoryStream Mmst = new MemoryStream())
                 {
-                  bitm.Save("ms"+ "-" + fila["numero_unidad"], ImageFormat.Jpeg);
-                  pictureBox1.Image = bitm;
-                  pictureBox1.Width = bitm.Width;
-                  pictureBox1.Height = bitm.Height;
+                    string nombreImagen = fila["nit"] + "-" + fila["numero_unidad"] + ".png";
+                    bitm.Save(nombreImagen, ImageFormat.Jpeg);
+                    pictureBox1.Image = bitm;
+                    pictureBox1.Width = bitm.Width;
+                    pictureBox1.Height = bitm.Height;
                 }
             }
-        }
+            string[] fotos = new string[resultado.ToArray().Length];
+            for (int indice = 0; indice < resultado.ToArray().Length; indice++)
+            {
+                Dictionary<string, string> fila = resultado.ToArray()[indice];
+                fotos[indice] = "C:\\Users\\lenovo\\workspace\\apppacheco\\apppacheco\\bin\\Debug\\" + fila["nit"] + "-" + fila["numero_unidad"] + ".png";
+
+            }
+            Pdf documentoPdf = new Pdf();
+            string nuevo = documentoPdf.crearPdf(fotos);
+            MessageBox.Show("El documento ha sido creado en la ruta: "+nuevo);
+            }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -65,6 +78,10 @@ namespace apppacheco
         }
 
         private void button3_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void label1_Click(object sender, EventArgs e)
         {
 
         }

@@ -31,9 +31,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IniciarAsamblea));
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.numunidades = new System.Windows.Forms.TextBox();
+            this.nombrePropiedad = new System.Windows.Forms.TextBox();
+            this.nit = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,12 +41,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.tipoasambleabix = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.horafinal = new System.Windows.Forms.TextBox();
+            this.horaasamblea = new System.Windows.Forms.TextBox();
+            this.fechaasamblea = new System.Windows.Forms.TextBox();
+            this.nombreasamblea = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -68,9 +68,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.numunidades);
+            this.groupBox1.Controls.Add(this.nombrePropiedad);
+            this.groupBox1.Controls.Add(this.nit);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
@@ -82,26 +82,26 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registrar La Propiedad Horizontal";
             // 
-            // textBox3
+            // numunidades
             // 
-            this.textBox3.Location = new System.Drawing.Point(180, 150);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
+            this.numunidades.Location = new System.Drawing.Point(180, 150);
+            this.numunidades.Name = "numunidades";
+            this.numunidades.Size = new System.Drawing.Size(100, 20);
+            this.numunidades.TabIndex = 6;
             // 
-            // textBox2
+            // nombrePropiedad
             // 
-            this.textBox2.Location = new System.Drawing.Point(180, 98);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
+            this.nombrePropiedad.Location = new System.Drawing.Point(180, 98);
+            this.nombrePropiedad.Name = "nombrePropiedad";
+            this.nombrePropiedad.Size = new System.Drawing.Size(100, 20);
+            this.nombrePropiedad.TabIndex = 5;
             // 
-            // textBox1
+            // nit
             // 
-            this.textBox1.Location = new System.Drawing.Point(180, 55);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.nit.Location = new System.Drawing.Point(180, 55);
+            this.nit.Name = "nit";
+            this.nit.Size = new System.Drawing.Size(100, 20);
+            this.nit.TabIndex = 4;
             // 
             // label4
             // 
@@ -162,12 +162,12 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.tipoasambleabix);
             this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.textBox5);
-            this.groupBox2.Controls.Add(this.textBox4);
+            this.groupBox2.Controls.Add(this.horafinal);
+            this.groupBox2.Controls.Add(this.horaasamblea);
+            this.groupBox2.Controls.Add(this.fechaasamblea);
+            this.groupBox2.Controls.Add(this.nombreasamblea);
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
@@ -180,13 +180,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "2. Datos de la asamblea.";
             // 
-            // comboBox1
+            // tipoasambleabix
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(163, 200);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 11;
+            this.tipoasambleabix.FormattingEnabled = true;
+            this.tipoasambleabix.Location = new System.Drawing.Point(163, 200);
+            this.tipoasambleabix.Name = "tipoasambleabix";
+            this.tipoasambleabix.Size = new System.Drawing.Size(121, 21);
+            this.tipoasambleabix.TabIndex = 11;
+            this.tipoasambleabix.SelectedIndexChanged += new System.EventHandler(this.tipoasambleabix_SelectedIndexChanged);
             // 
             // button4
             // 
@@ -198,33 +199,33 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // textBox7
+            // horafinal
             // 
-            this.textBox7.Location = new System.Drawing.Point(163, 155);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 8;
+            this.horafinal.Location = new System.Drawing.Point(163, 155);
+            this.horafinal.Name = "horafinal";
+            this.horafinal.Size = new System.Drawing.Size(100, 20);
+            this.horafinal.TabIndex = 8;
             // 
-            // textBox6
+            // horaasamblea
             // 
-            this.textBox6.Location = new System.Drawing.Point(163, 116);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 7;
+            this.horaasamblea.Location = new System.Drawing.Point(163, 116);
+            this.horaasamblea.Name = "horaasamblea";
+            this.horaasamblea.Size = new System.Drawing.Size(100, 20);
+            this.horaasamblea.TabIndex = 7;
             // 
-            // textBox5
+            // fechaasamblea
             // 
-            this.textBox5.Location = new System.Drawing.Point(163, 72);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 6;
+            this.fechaasamblea.Location = new System.Drawing.Point(163, 72);
+            this.fechaasamblea.Name = "fechaasamblea";
+            this.fechaasamblea.Size = new System.Drawing.Size(100, 20);
+            this.fechaasamblea.TabIndex = 6;
             // 
-            // textBox4
+            // nombreasamblea
             // 
-            this.textBox4.Location = new System.Drawing.Point(163, 31);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 5;
+            this.nombreasamblea.Location = new System.Drawing.Point(163, 31);
+            this.nombreasamblea.Name = "nombreasamblea";
+            this.nombreasamblea.Size = new System.Drawing.Size(100, 20);
+            this.nombreasamblea.TabIndex = 5;
             // 
             // label9
             // 
@@ -297,9 +298,9 @@
         #endregion
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox numunidades;
+        private System.Windows.Forms.TextBox nombrePropiedad;
+        private System.Windows.Forms.TextBox nit;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -307,12 +308,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox tipoasambleabix;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox horafinal;
+        private System.Windows.Forms.TextBox horaasamblea;
+        private System.Windows.Forms.TextBox fechaasamblea;
+        private System.Windows.Forms.TextBox nombreasamblea;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;

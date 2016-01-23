@@ -63,7 +63,7 @@
             this.groupBox1.Controls.Add(this.button2);
             this.groupBox1.Location = new System.Drawing.Point(58, 184);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(247, 134);
+            this.groupBox1.Size = new System.Drawing.Size(246, 166);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cargar Archivos";
@@ -90,11 +90,11 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(152, 95);
+            this.button2.Location = new System.Drawing.Point(152, 94);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(88, 52);
             this.button2.TabIndex = 0;
-            this.button2.Text = "Cargar";
+            this.button2.Text = "Cargar archivo excel";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 

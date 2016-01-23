@@ -38,49 +38,37 @@ namespace apppacheco
 
         private void button2_Click(object sender, EventArgs e)
         {
-            // int size = -1;
-            //DialogResult result = openFileDialog1.ShowDialog(); // Show the dialog.
-            //if (result == DialogResult.OK) // Test result.
-            //{
-            //  string file = openFileDialog1.FileName;
-
-            //}
-            // MessageBox.Show(size.ToString);
-            // MessageBox.Show(result.ToString);
-            //Console.WriteLine(size); // <-- Shows file size in debugging mode.
-            //Console.WriteLine(result); // <-- For debugging use.
-            // Load Excel file.
-            //var workbook = ExcelFile.Load();
-            // Select active worksheet.
-            //var worksheet = workbook.Worksheets.ActiveWorksheet;
-            // Display the value of first cell in MessageBox.
-            //MessageBox.Show(worksheet.Cells["A1"].GetFormattedValue());
-            var stream = File.Open("C:\\Users\\lenovo\\Documents\\LISTADO DE PROPIETARIOS.xlsx", FileMode.Open, FileAccess.Read);
+            string ruta = this.buscarDoc();
+            ConexionPostgres conn = new ConexionPostgres();
+            var stream = File.Open(ruta, FileMode.Open, FileAccess.Read);
 
             IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
 
             DataSet result = excelReader.AsDataSet();
 
-            excelReader.IsFirstRowAsColumnNames = true;
-            DataSet columnnames = excelReader.AsDataSet();
-            ConexionPostgres conn = new ConexionPostgres();
-
+            //excelReader.IsFirstRowAsColumnNames = true;
+            //DataSet columnnames = excelReader.AsDataSet();
+            
             foreach (DataRow row in result.Tables[0].Rows.Cast<DataRow>().Skip(1))
             {
-                foreach (var value in row.ItemArray)
-                {
-                    //MessageBox.Show(value.ToString());
-                     var cadenaSql = "INSERT INTO modelo.unidad_residencial(nit, numero_unidad, nombre_completo, coeficiente, documento) values ('" + row.ItemArray[0] + "','" + row.ItemArray[1] + "','" + row.ItemArray[2] + "','" + row.ItemArray[3] + "','" + row.ItemArray[4]+"');";
-                    conn.registrar(cadenaSql);
-                    //if (cadenaSql.=true)
-                    //{
-                      //  MessageBox.Show("carga exitosa");
-                    //}
-                }
+                var cadenaSql = "INSERT INTO modelo.unidad_residencial(nit, numero_unidad, nombre_completo, coeficiente, documento) values ('" + row.ItemArray[0] + "','" + row.ItemArray[1] + "','" + row.ItemArray[2] + "','" + row.ItemArray[3] + "','" + row.ItemArray[4] + "');";
+                conn.registrar(cadenaSql);
             }
-            
 
             excelReader.Close();
+            MessageBox.Show("Datos cargados correctamente");
+        }
+
+        private string buscarDoc()
+        {
+            string file = "";
+            DialogResult result = openFileDialog1.ShowDialog();
+            if (result == DialogResult.OK) // Test result.
+            {
+                file = openFileDialog1.FileName;
+            }
+            return file ;
+
         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
@@ -90,7 +78,7 @@ namespace apppacheco
 
         private void Form1_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         private void button4_Click(object sender, EventArgs e)

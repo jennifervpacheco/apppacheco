@@ -19,6 +19,9 @@ namespace apppacheco
 
         private void button1_Click(object sender, EventArgs e)
         {
+            ConexionPostgres conn = new ConexionPostgres();
+            var cadenaSql = "INSERT INTO modelo.propiedad_horizontal(nit, nombre, numero_propiedades) values ('"+nit.Text+"','"+nombrePropiedad.Text+"','"+numunidades.Text+"');";
+            conn.registrar(cadenaSql);
 
         }
 
@@ -29,13 +32,41 @@ namespace apppacheco
 
         private void button4_Click(object sender, EventArgs e)
         {
+            ConexionPostgres conn = new ConexionPostgres();
+            var cadenaSql = "INSERT INTO modelo.asamblea(nit, nombre, fecha, ) values ('" + nit.Text + "','" + nombrePropiedad.Text + "','" + numunidades.Text + "');";
+            conn.registrar(cadenaSql);
+
+
             OpcionesAsamblea miformulario = new OpcionesAsamblea();
             miformulario.Show();
         }
 
+
         private void IniciarAsamblea_Load(object sender, EventArgs e)
         {
             ConexionPostgres conn = new ConexionPostgres();
+            var resultado = conn.consultar("SELECT * FROM modelo.tipo_asamblea; ");
+
+            List<Select> sl = new List<Select>();
+            
+            foreach (Dictionary<string, string> fila in resultado)
+            {
+                int numVal = Int32.Parse(fila["id_tipo_asamblea"]);
+               // tipoasambleabix.Items.Add(new ListItem ( fila["nombre"], numVal));
+                sl.Add(new Select() { Text =  fila["nombre"], Value = fila["id_tipo_asamblea"] });
+            }
+            tipoasambleabix.DataSource = sl;
+            tipoasambleabix.DisplayMember = "Text";
+            //http://stackoverflow.com/questions/3063320/combobox-adding-text-and-value-to-an-item-no-binding-source 
         }
+
+        private void tipoasambleabix_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            
+
+            
+
+         }
     }
 }
