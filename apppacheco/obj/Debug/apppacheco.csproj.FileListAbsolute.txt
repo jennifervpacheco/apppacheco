@@ -102,3 +102,6 @@ C:\Users\jorge\workspace\apppacheco1\apppacheco\obj\Debug\apppacheco.RegistroFin
 C:\Users\jorge\workspace\apppacheco1\apppacheco\obj\Debug\apppacheco.Votacion.resources
 C:\Users\jorge\workspace\apppacheco1\apppacheco\obj\Debug\apppacheco.csproj.GenerateResource.Cache
 >>>>>>> fed9bbd0d061e4ed4e88998eb358a045b296899a
+C:\Users\lenovo\workspace\apppacheco\apppacheco\bin\Debug\Newtonsoft.Json.dll
+C:\Users\lenovo\workspace\apppacheco\apppacheco\bin\Debug\Newtonsoft.Json.xml
+C:\Users\lenovo\workspace\apppacheco\apppacheco\obj\Debug\apppacheco.ConfiguracionServidorBaseDatos.resources

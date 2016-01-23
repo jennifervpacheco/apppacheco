@@ -22,7 +22,7 @@ namespace apppacheco
             ConexionPostgres conn = new ConexionPostgres();
             var cadenaSql = "INSERT INTO modelo.propiedad_horizontal(nit, nombre, numero_propiedades) values ('"+nit.Text+"','"+nombrePropiedad.Text+"','"+numunidades.Text+"');";
             conn.registrar(cadenaSql);
-
+            MessageBox.Show("LA PROPIEDAD HA SIDO REGISTRADA CONTINUE CON EL REGISTRO DE LA ASAMBLEA");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace apppacheco
         private void button4_Click(object sender, EventArgs e)
         {
             ConexionPostgres conn = new ConexionPostgres();
-            var cadenaSql = "INSERT INTO modelo.asamblea(nit, nombre, fecha, ) values ('" + nit.Text + "','" + nombrePropiedad.Text + "','" + numunidades.Text + "');";
+            var cadenaSql = "INSERT INTO modelo.asamblea(nit, nombre, fecha, tiempo_inicial, tiempo_final, id_tipo_asamblea) VALUES('123456789', 'asamblea ordinaria villa amparo', '2016-01-23', '12:31', '00:00', '2'); ";
             conn.registrar(cadenaSql);
             
         }
