@@ -41,6 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.dtp = new System.Windows.Forms.DateTimePicker();
             this.tipoasambleabix = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.horafinal = new System.Windows.Forms.TextBox();
@@ -49,10 +50,11 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.nitasam = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -164,7 +166,9 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dateTimePicker1);
+            this.groupBox2.Controls.Add(this.nitasam);
+            this.groupBox2.Controls.Add(this.label10);
+            this.groupBox2.Controls.Add(this.dtp);
             this.groupBox2.Controls.Add(this.tipoasambleabix);
             this.groupBox2.Controls.Add(this.button4);
             this.groupBox2.Controls.Add(this.horafinal);
@@ -177,15 +181,22 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(659, 182);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(415, 279);
+            this.groupBox2.Size = new System.Drawing.Size(415, 303);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "2. Datos de la asamblea.";
             // 
+            // dtp
+            // 
+            this.dtp.Location = new System.Drawing.Point(177, 119);
+            this.dtp.Name = "dtp";
+            this.dtp.Size = new System.Drawing.Size(200, 20);
+            this.dtp.TabIndex = 12;
+            // 
             // tipoasambleabix
             // 
             this.tipoasambleabix.FormattingEnabled = true;
-            this.tipoasambleabix.Location = new System.Drawing.Point(163, 200);
+            this.tipoasambleabix.Location = new System.Drawing.Point(177, 247);
             this.tipoasambleabix.Name = "tipoasambleabix";
             this.tipoasambleabix.Size = new System.Drawing.Size(121, 21);
             this.tipoasambleabix.TabIndex = 11;
@@ -193,7 +204,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(281, 247);
+            this.button4.Location = new System.Drawing.Point(288, 274);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 10;
@@ -203,21 +214,21 @@
             // 
             // horafinal
             // 
-            this.horafinal.Location = new System.Drawing.Point(163, 155);
+            this.horafinal.Location = new System.Drawing.Point(177, 202);
             this.horafinal.Name = "horafinal";
             this.horafinal.Size = new System.Drawing.Size(100, 20);
             this.horafinal.TabIndex = 8;
             // 
             // horaasamblea
             // 
-            this.horaasamblea.Location = new System.Drawing.Point(163, 116);
+            this.horaasamblea.Location = new System.Drawing.Point(177, 163);
             this.horaasamblea.Name = "horaasamblea";
             this.horaasamblea.Size = new System.Drawing.Size(100, 20);
             this.horaasamblea.TabIndex = 7;
             // 
             // nombreasamblea
             // 
-            this.nombreasamblea.Location = new System.Drawing.Point(163, 31);
+            this.nombreasamblea.Location = new System.Drawing.Point(177, 78);
             this.nombreasamblea.Name = "nombreasamblea";
             this.nombreasamblea.Size = new System.Drawing.Size(100, 20);
             this.nombreasamblea.TabIndex = 5;
@@ -225,7 +236,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(24, 209);
+            this.label9.Location = new System.Drawing.Point(38, 256);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(91, 13);
             this.label9.TabIndex = 4;
@@ -234,7 +245,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(24, 162);
+            this.label8.Location = new System.Drawing.Point(38, 209);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(100, 13);
             this.label8.TabIndex = 3;
@@ -243,16 +254,25 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(27, 119);
+            this.label7.Location = new System.Drawing.Point(41, 166);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 13);
             this.label7.TabIndex = 2;
             this.label7.Text = "Hora de inicio";
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(38, 126);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(40, 13);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Fecha:";
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(21, 39);
+            this.label5.Location = new System.Drawing.Point(35, 86);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(47, 13);
             this.label5.TabIndex = 0;
@@ -260,7 +280,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(552, 491);
+            this.button3.Location = new System.Drawing.Point(572, 491);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(126, 23);
             this.button3.TabIndex = 11;
@@ -268,21 +288,21 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
-            // label6
+            // nitasam
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(24, 79);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 13);
-            this.label6.TabIndex = 1;
-            this.label6.Text = "Fecha:";
+            this.nitasam.Location = new System.Drawing.Point(177, 38);
+            this.nitasam.Name = "nitasam";
+            this.nitasam.Size = new System.Drawing.Size(100, 20);
+            this.nitasam.TabIndex = 14;
             // 
-            // dateTimePicker1
+            // label10
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(163, 72);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 12;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(30, 38);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(28, 13);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "NIT:";
             // 
             // IniciarAsamblea
             // 
@@ -331,7 +351,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtp;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox nitasam;
+        private System.Windows.Forms.Label label10;
     }
 }
