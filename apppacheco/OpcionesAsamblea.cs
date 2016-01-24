@@ -12,27 +12,29 @@ namespace apppacheco
 {
     public partial class OpcionesAsamblea : Form
     {
-        public OpcionesAsamblea()
+        private string fecha;
+        public OpcionesAsamblea(string fecha)
         {
             InitializeComponent();
+            this.fecha = fecha;
         }
 
         private void OpcionesAsamblea_Load(object sender, EventArgs e)
         {
-            this.TopMost = true;
-            this.FormBorderStyle = FormBorderStyle.None;
+            //this.TopMost = true;
+            //this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Registro re = new Registro();
+            Registro re = new Registro(this.fecha);
             re.Show();
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            RegistroFinal refi = new RegistroFinal();
+            RegistroFinal refi = new RegistroFinal(this.fecha);
             refi.Show();
         }
 

@@ -82,7 +82,7 @@
             this.groupBox1.Location = new System.Drawing.Point(74, 182);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(486, 242);
-            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registrar La Propiedad Horizontal";
             // 
@@ -91,21 +91,21 @@
             this.numunidades.Location = new System.Drawing.Point(180, 150);
             this.numunidades.Name = "numunidades";
             this.numunidades.Size = new System.Drawing.Size(100, 20);
-            this.numunidades.TabIndex = 6;
+            this.numunidades.TabIndex = 2;
             // 
             // nombrePropiedad
             // 
             this.nombrePropiedad.Location = new System.Drawing.Point(180, 98);
             this.nombrePropiedad.Name = "nombrePropiedad";
             this.nombrePropiedad.Size = new System.Drawing.Size(100, 20);
-            this.nombrePropiedad.TabIndex = 5;
+            this.nombrePropiedad.TabIndex = 1;
             // 
             // nit
             // 
             this.nit.Location = new System.Drawing.Point(180, 55);
             this.nit.Name = "nit";
             this.nit.Size = new System.Drawing.Size(100, 20);
-            this.nit.TabIndex = 4;
+            this.nit.TabIndex = 0;
             // 
             // label4
             // 
@@ -139,7 +139,7 @@
             this.button1.Location = new System.Drawing.Point(289, 209);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(169, 23);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 3;
             this.button1.Text = "Registrar propiedad horizontal";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -159,7 +159,7 @@
             this.button2.Location = new System.Drawing.Point(572, 520);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 8;
+            this.button2.TabIndex = 3;
             this.button2.Text = "Cerrar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -182,7 +182,7 @@
             this.groupBox2.Location = new System.Drawing.Point(659, 182);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(415, 303);
-            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "2. Datos de la asamblea.";
             // 
@@ -191,7 +191,7 @@
             this.dtp.Location = new System.Drawing.Point(177, 119);
             this.dtp.Name = "dtp";
             this.dtp.Size = new System.Drawing.Size(200, 20);
-            this.dtp.TabIndex = 12;
+            this.dtp.TabIndex = 2;
             // 
             // tipoasambleabix
             // 
@@ -199,7 +199,7 @@
             this.tipoasambleabix.Location = new System.Drawing.Point(177, 247);
             this.tipoasambleabix.Name = "tipoasambleabix";
             this.tipoasambleabix.Size = new System.Drawing.Size(121, 21);
-            this.tipoasambleabix.TabIndex = 11;
+            this.tipoasambleabix.TabIndex = 5;
             this.tipoasambleabix.SelectedIndexChanged += new System.EventHandler(this.tipoasambleabix_SelectedIndexChanged);
             // 
             // button4
@@ -207,7 +207,7 @@
             this.button4.Location = new System.Drawing.Point(288, 274);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 10;
+            this.button4.TabIndex = 6;
             this.button4.Text = "Comenzar";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -217,21 +217,21 @@
             this.horafinal.Location = new System.Drawing.Point(177, 202);
             this.horafinal.Name = "horafinal";
             this.horafinal.Size = new System.Drawing.Size(100, 20);
-            this.horafinal.TabIndex = 8;
+            this.horafinal.TabIndex = 4;
             // 
             // horaasamblea
             // 
             this.horaasamblea.Location = new System.Drawing.Point(177, 163);
             this.horaasamblea.Name = "horaasamblea";
             this.horaasamblea.Size = new System.Drawing.Size(100, 20);
-            this.horaasamblea.TabIndex = 7;
+            this.horaasamblea.TabIndex = 3;
             // 
             // nombreasamblea
             // 
             this.nombreasamblea.Location = new System.Drawing.Point(177, 78);
             this.nombreasamblea.Name = "nombreasamblea";
             this.nombreasamblea.Size = new System.Drawing.Size(100, 20);
-            this.nombreasamblea.TabIndex = 5;
+            this.nombreasamblea.TabIndex = 1;
             // 
             // label9
             // 
@@ -283,7 +283,7 @@
             this.button3.Location = new System.Drawing.Point(572, 491);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(126, 23);
-            this.button3.TabIndex = 11;
+            this.button3.TabIndex = 2;
             this.button3.Text = "Registrar pregunta";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -293,7 +293,7 @@
             this.nitasam.Location = new System.Drawing.Point(177, 38);
             this.nitasam.Name = "nitasam";
             this.nitasam.Size = new System.Drawing.Size(100, 20);
-            this.nitasam.TabIndex = 14;
+            this.nitasam.TabIndex = 0;
             // 
             // label10
             // 

@@ -34,14 +34,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -82,7 +82,7 @@
             this.button3.Location = new System.Drawing.Point(109, 105);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(149, 37);
-            this.button3.TabIndex = 9;
+            this.button3.TabIndex = 0;
             this.button3.Text = "Iniciar Registro";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -94,9 +94,19 @@
             this.groupBox1.Location = new System.Drawing.Point(56, 210);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(264, 148);
-            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "1. Registro Inicial";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(135, 105);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(123, 37);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "Iniciar Registro";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label2
             // 
@@ -115,19 +125,19 @@
             this.groupBox2.Location = new System.Drawing.Point(56, 384);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(264, 148);
-            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "2. Registro Final";
             // 
-            // button2
+            // label3
             // 
-            this.button2.Location = new System.Drawing.Point(135, 105);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(123, 37);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Iniciar Registro";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(21, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(156, 39);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "En este espacio se realizara  el \r\ncorrespondiente registro Final\r\n de la asamble" +
+    "a";
             // 
             // groupBox3
             // 
@@ -136,7 +146,7 @@
             this.groupBox3.Location = new System.Drawing.Point(391, 281);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(264, 148);
-            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "3. Votación";
             // 
@@ -155,7 +165,7 @@
             this.button4.Location = new System.Drawing.Point(109, 105);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(149, 37);
-            this.button4.TabIndex = 9;
+            this.button4.TabIndex = 0;
             this.button4.Text = "Iniciar Votación";
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -168,16 +178,6 @@
             this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 2;
             this.label5.Text = "label5";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(156, 39);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "En este espacio se realizara  el \r\ncorrespondiente registro Final\r\n de la asamble" +
-    "a";
             // 
             // OpcionesAsamblea
             // 

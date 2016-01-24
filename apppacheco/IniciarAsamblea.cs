@@ -31,9 +31,10 @@ namespace apppacheco
         }
 
         private void button4_Click(object sender, EventArgs e)
-        {
+        {  Select sl1 = tipoasambleabix.SelectedItem as Select;
+           string valor = sl1.Value;
             ConexionPostgres conn = new ConexionPostgres();
-            var cadenaSql = "INSERT INTO modelo.asamblea(nit, nombre, fecha, tiempo_inicial, tiempo_final, id_tipo_asamblea) VALUES('"+ nitasam.Text+ "','" + nombreasamblea.Text + "', '" + dtp.Value.Date.Year + "-" +dtp.Value.Date.Month + "-" + dtp.Value.Date.Day + "', '" + horaasamblea.Text+ "', '"+ horafinal.Text + "', '2'); ";
+            var cadenaSql = "INSERT INTO modelo.asamblea(nit, nombre, fecha, tiempo_inicial, tiempo_final, id_tipo_asamblea) VALUES('"+ nitasam.Text+ "','" + nombreasamblea.Text + "', '" + dtp.Value.Date.Year + "-" +dtp.Value.Date.Month + "-" + dtp.Value.Date.Day + "', '" + horaasamblea.Text+ "', '"+ horafinal.Text + "', '"+valor+ "'); ";
             conn.registrar(cadenaSql);
             MessageBox.Show("SE REALIZO EL REGISTRO DE LA ASAMBLEA CONTINUAR EN EL FORMULARIO PRINCIPAL");
         }
@@ -41,8 +42,8 @@ namespace apppacheco
 
         private void IniciarAsamblea_Load(object sender, EventArgs e)
         {
-            this.TopMost = true;
-            this.FormBorderStyle = FormBorderStyle.None;
+            //this.TopMost = true;
+            //this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             ConexionPostgres conn = new ConexionPostgres();
             var resultado = conn.consultar("SELECT * FROM modelo.tipo_asamblea; ");
@@ -63,10 +64,7 @@ namespace apppacheco
         private void tipoasambleabix_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            
-
-            
-
+           
          }
 
         private void button3_Click(object sender, EventArgs e)

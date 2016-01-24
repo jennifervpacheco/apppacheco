@@ -27,8 +27,8 @@ namespace apppacheco
 
         private void GenerarCodigo_Load(object sender, EventArgs e)
         {
-            this.TopMost = true;
-            this.FormBorderStyle = FormBorderStyle.None;
+            //this.TopMost = true;
+            //this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
 
         }
@@ -40,12 +40,12 @@ namespace apppacheco
             var resultado = conn.consultar("SELECT * FROM modelo.unidad_residencial WHERE nit = '"+nit+"'; ");
             foreach (Dictionary<string, string> fila in resultado)
             {
-                var codigo = fila["nit"] + "-" + fila["numero_unidad"];
+                var codigo = fila["nit"] + "-" + fila["numero_unidad"]+"+";
                 string barcode = codigo;
-                Bitmap bitm = new Bitmap(barcode.Length * 45, 160);
+                Bitmap bitm = new Bitmap(barcode.Length * 30, 90);
                 using (Graphics graphic = Graphics.FromImage(bitm))
                 {
-                    Font newfont = new Font("IDAutomationHC39M", 20);
+                    Font newfont = new Font("IDAutomationHC39M", 15);
                     PointF point = new PointF(2f, 2f);
                     SolidBrush black = new SolidBrush(Color.Black);
                     SolidBrush white = new SolidBrush(Color.White);

@@ -18,7 +18,6 @@ namespace apppacheco
         private string archivoConfiguracion = "config/servidor.json";
         private DataSet ds = new DataSet();
         private DataTable dt = new DataTable();
-        private List<Dictionary<string, string>> filas = new List<Dictionary<string, string>>();
         // PostgeSQL-style connection string
         private string getConnString() {
             StreamReader r = new StreamReader(this.archivoConfiguracion, Encoding.Default, true);
@@ -39,6 +38,9 @@ namespace apppacheco
         }
         public List<Dictionary<string,string>> consultar(string sql)
         {
+
+
+            List<Dictionary<string, string>> filas = new List<Dictionary<string, string>>();
             try
             {
                 // Making connection with Npgsql provider
@@ -72,7 +74,7 @@ namespace apppacheco
                 // something went wrong, and you wanna know why
                 Console.WriteLine(msg.ToString());
             }
-            return this.filas;
+            return filas;
         }
 
         public bool registrar(string sql)

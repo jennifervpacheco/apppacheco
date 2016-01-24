@@ -78,9 +78,24 @@ namespace apppacheco
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.TopMost = true;
-            this.FormBorderStyle = FormBorderStyle.None;
+            //this.TopMost = true;
+            //this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
+            ConexionPostgres conn = new ConexionPostgres();
+            var resultado = conn.consultar("SELECT * FROM modelo.asamblea; ");
+
+            List<Select> sl = new List<Select>();
+
+            foreach (Dictionary<string, string> fila in resultado)
+            {
+                int numVal = Int32.Parse(fila["nit"]);
+                // tipoasambleabix.Items.Add(new ListItem ( fila["nombre"], numVal));
+                sl.Add(new Select() { Text = fila["nit"]+"-" +fila["nombre"], Value = fila["nit"] });
+            }
+            comboBox1.DataSource = sl;
+            comboBox1.DisplayMember = "Text";
+            //http://stackoverflow.com/questions/3063320/combobox-adding-text-and-value-to-an-item-no-binding-source 
+
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -91,8 +106,24 @@ namespace apppacheco
 
         private void button5_Click(object sender, EventArgs e)
         {
-            OpcionesAsamblea op = new OpcionesAsamblea();
-            op.Show();
+            Select sl1 = comboBox1.SelectedItem as Select;
+            string valor = sl1.Value;
+            string fecha = dtp.Value.Date.Year + "-" + dtp.Value.Date.Month + "-" + dtp.Value.Date.Day;
+            ConexionPostgres conn = new ConexionPostgres();
+            var cadenaSql = "select count(*)  from modelo.asamblea  where nit='"+ valor+ "' AND fecha='"+fecha+"';";
+            var cuenta = conn.consultar(cadenaSql)[0]["count"];
+            if (cuenta== "1")
+            {
+                var cadenaSql1 = "select nombre   from modelo.asamblea  where nit='" + valor + "' AND fecha='"+fecha+"';";
+                var nombre = conn.consultar(cadenaSql1)[0]["nombre"]; 
+                MessageBox.Show("ESTA INGRESANDO A: "+nombre);
+               
+             OpcionesAsamblea op = new OpcionesAsamblea(fecha);
+             op.Show();
+            }
+
+
+           
         }
 
         private void button6_Click(object sender, EventArgs e)

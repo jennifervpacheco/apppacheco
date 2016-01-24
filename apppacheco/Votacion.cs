@@ -24,8 +24,8 @@ namespace apppacheco
 
         private void Votacion_Load(object sender, EventArgs e)
         {
-            this.TopMost = true;
-            this.FormBorderStyle = FormBorderStyle.None;
+            //this.TopMost = true;
+            //this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             ConexionPostgres conn = new ConexionPostgres();
             var resultado = conn.consultar("SELECT * FROM modelo.propiedad_horizontal");
