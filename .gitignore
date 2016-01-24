@@ -1,1 +1,10 @@
 .vs
+apppacheco/bin/Debug/apppacheco.exe
+apppacheco/bin/Debug/apppacheco.pdb
+apppacheco/obj/Debug/*
+apppacheco/obj/Debug/apppacheco.csproj.FileListAbsolute.txt
+apppacheco/obj/Debug/apppacheco.csproj.GenerateResource.Cache
+apppacheco/obj/Debug/apppacheco.csprojResolveAssemblyReference.cache
+apppacheco/obj/Debug/apppacheco.exe
+apppacheco/obj/Debug/apppacheco.pdb
+
