@@ -118,7 +118,7 @@ namespace apppacheco
                 var nombre = conn.consultar(cadenaSql1)[0]["nombre"]; 
                 MessageBox.Show("ESTA INGRESANDO A: "+nombre);
                
-             OpcionesAsamblea op = new OpcionesAsamblea(fecha);
+             OpcionesAsamblea op = new OpcionesAsamblea(fecha, valor);
              op.Show();
             }
 

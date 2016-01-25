@@ -13,10 +13,13 @@ namespace apppacheco
     public partial class OpcionesAsamblea : Form
     {
         private string fecha;
-        public OpcionesAsamblea(string fecha)
+        private string valor;
+        public OpcionesAsamblea(string fecha, string valor)
         {
             InitializeComponent();
             this.fecha = fecha;
+            this.valor = valor;
+            
         }
 
         private void OpcionesAsamblea_Load(object sender, EventArgs e)
@@ -40,7 +43,7 @@ namespace apppacheco
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Votacion vo = new Votacion();
+            Votacion vo = new Votacion(this.fecha, this.valor );
             vo.Show();
         }
 

@@ -44,6 +44,12 @@ namespace apppacheco
             ConexionPostgres conn = new ConexionPostgres();
             var cadenaSql = "INSERT INTO modelo.pregunta(pregunta) VALUES('"+ textBox12.Text+ "') RETURNING id_pregunta;";
             var id_pregunta = conn.consultar(cadenaSql)[0]["id_pregunta"];
+            Select sl1 = comboBox1.SelectedItem as Select;
+            string valor = sl1.Value;
+            string fecha = dtp.Value.Date.Year + "-" + dtp.Value.Date.Month + "-" + dtp.Value.Date.Day;
+
+            var cadenaSql2 = "INSERT INTO modelo.pregunta_actual(nit, fecha,id_pregunta) VALUES('" + valor + "','"+fecha+"','"+id_pregunta+"') ;";
+            conn.registrar(cadenaSql2);
             for (int i = 0; i < opciones.ToArray().Length; i++)
             {
                 var id_opcion = i + 1;
@@ -78,6 +84,20 @@ namespace apppacheco
             //this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             ConexionPostgres conn = new ConexionPostgres();
+            var resultado = conn.consultar("SELECT * FROM modelo.asamblea; ");
+
+            List<Select> sl = new List<Select>();
+
+            foreach (Dictionary<string, string> fila in resultado)
+            {
+                int numVal = Int32.Parse(fila["nit"]);
+                // tipoasambleabix.Items.Add(new ListItem ( fila["nombre"], numVal));
+                sl.Add(new Select() { Text = fila["nit"] + "-" + fila["nombre"], Value = fila["nit"] });
+            }
+            comboBox1.DataSource = sl;
+            comboBox1.DisplayMember = "Text";
+            //http://stackoverflow.com/questions/3063320/combobox-adding-text-and-value-to-an-item-no-binding-source 
+
         }
     }
 }
