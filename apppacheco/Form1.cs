@@ -19,12 +19,7 @@ namespace apppacheco
         {
             InitializeComponent();
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        
         private void button3_Click(object sender, EventArgs e)
         {
             IniciarAsamblea miformulario = new IniciarAsamblea();
@@ -41,20 +36,15 @@ namespace apppacheco
             string ruta = this.buscarDoc();
             ConexionPostgres conn = new ConexionPostgres();
             var stream = File.Open(ruta, FileMode.Open, FileAccess.Read);
-
             IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
-
             DataSet result = excelReader.AsDataSet();
-
             //excelReader.IsFirstRowAsColumnNames = true;
             //DataSet columnnames = excelReader.AsDataSet();
-            
             foreach (DataRow row in result.Tables[0].Rows.Cast<DataRow>().Skip(1))
             {
                 var cadenaSql = "INSERT INTO modelo.unidad_residencial(nit, numero_unidad, nombre_completo, coeficiente, documento) values ('" + row.ItemArray[0] + "','" + row.ItemArray[1] + "','" + row.ItemArray[2] + "','" + row.ItemArray[3] + "','" + row.ItemArray[4] + "');";
                 conn.registrar(cadenaSql);
             }
-
             excelReader.Close();
             MessageBox.Show("Datos cargados correctamente");
         }
@@ -68,8 +58,7 @@ namespace apppacheco
                 file = openFileDialog1.FileName;
             }
             return file ;
-
-        }
+         }
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
@@ -83,9 +72,7 @@ namespace apppacheco
             this.WindowState = FormWindowState.Maximized;
             ConexionPostgres conn = new ConexionPostgres();
             var resultado = conn.consultar("SELECT * FROM modelo.asamblea; ");
-
             List<Select> sl = new List<Select>();
-
             foreach (Dictionary<string, string> fila in resultado)
             {
                 int numVal = Int32.Parse(fila["nit"]);
@@ -95,7 +82,6 @@ namespace apppacheco
             comboBox1.DataSource = sl;
             comboBox1.DisplayMember = "Text";
             //http://stackoverflow.com/questions/3063320/combobox-adding-text-and-value-to-an-item-no-binding-source 
-
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -117,19 +103,16 @@ namespace apppacheco
                 var cadenaSql1 = "select nombre   from modelo.asamblea  where nit='" + valor + "' AND fecha='"+fecha+"';";
                 var nombre = conn.consultar(cadenaSql1)[0]["nombre"]; 
                 MessageBox.Show("ESTA INGRESANDO A: "+nombre);
-               
-             OpcionesAsamblea op = new OpcionesAsamblea(fecha, valor);
-             op.Show();
+                OpcionesAsamblea op = new OpcionesAsamblea(fecha, valor);
+                op.Show();
             }
-
-
-           
-        }
+         }
 
         private void button6_Click(object sender, EventArgs e)
         {
             ConfiguracionServidorBaseDatos ser = new ConfiguracionServidorBaseDatos();
             ser.Show();
         }
-    }
+
+     }
 }

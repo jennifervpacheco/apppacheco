@@ -38,16 +38,12 @@ namespace apppacheco
                     opciones.Add(opcionesText[i]);
                 }
             }
-            
-            // INSERT INTO modelo.pregunta(pregunta) VALUES('') RETURNING id_pregunta;
-            //INSERT INTO modelo.opcion_pregunta(id_opcion, id_pregunta, opcion) VALUES('1', '2', 'si')
             ConexionPostgres conn = new ConexionPostgres();
             var cadenaSql = "INSERT INTO modelo.pregunta(pregunta) VALUES('"+ textBox12.Text+ "') RETURNING id_pregunta;";
             var id_pregunta = conn.consultar(cadenaSql)[0]["id_pregunta"];
             Select sl1 = comboBox1.SelectedItem as Select;
             string valor = sl1.Value;
             string fecha = dtp.Value.Date.Year + "-" + dtp.Value.Date.Month + "-" + dtp.Value.Date.Day;
-
             var cadenaSql2 = "INSERT INTO modelo.pregunta_actual(nit, fecha,id_pregunta) VALUES('" + valor + "','"+fecha+"','"+id_pregunta+"') ;";
             conn.registrar(cadenaSql2);
             for (int i = 0; i < opciones.ToArray().Length; i++)
@@ -56,12 +52,8 @@ namespace apppacheco
                 var cadenaSql1 = "INSERT INTO modelo.opcion_pregunta(id_opcion, id_pregunta, opcion) VALUES('" + id_opcion + "', '"+id_pregunta+"', '" + opciones[i] + "')";
                 conn.registrar(cadenaSql1);
             }
-           
-
             MessageBox.Show("LA PREGRUNTA HA SIDO REGISTRADA CONTINUE CON LA VOTACION");
-            
-
-        }
+ }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -85,9 +77,7 @@ namespace apppacheco
             this.WindowState = FormWindowState.Maximized;
             ConexionPostgres conn = new ConexionPostgres();
             var resultado = conn.consultar("SELECT * FROM modelo.asamblea; ");
-
             List<Select> sl = new List<Select>();
-
             foreach (Dictionary<string, string> fila in resultado)
             {
                 int numVal = Int32.Parse(fila["nit"]);

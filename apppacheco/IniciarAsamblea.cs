@@ -47,9 +47,7 @@ namespace apppacheco
             this.WindowState = FormWindowState.Maximized;
             ConexionPostgres conn = new ConexionPostgres();
             var resultado = conn.consultar("SELECT * FROM modelo.tipo_asamblea; ");
-
             List<Select> sl = new List<Select>();
-            
             foreach (Dictionary<string, string> fila in resultado)
             {
                 int numVal = Int32.Parse(fila["id_tipo_asamblea"]);
@@ -62,9 +60,7 @@ namespace apppacheco
         }
 
         private void tipoasambleabix_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-           
+        {   
          }
 
         private void button3_Click(object sender, EventArgs e)
@@ -75,7 +71,6 @@ namespace apppacheco
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

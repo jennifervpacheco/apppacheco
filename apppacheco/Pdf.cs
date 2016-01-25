@@ -11,9 +11,6 @@ using MigraDoc.Rendering;
 using PdfSharp.Drawing;
 using PdfSharp.Pdf;
 
-
-
-
 namespace apppacheco
 {
     class Pdf
@@ -25,30 +22,24 @@ namespace apppacheco
             style = document.Styles[StyleNames.Header];
             //style.Section.PageSetupHeaders.EvenPage.AddTable();
             style.ParagraphFormat.AddTabStop("1cm", TabAlignment.Center);
-
             style = document.Styles[StyleNames.Footer];
             style.ParagraphFormat.AddTabStop("1cm", TabAlignment.Center);
             style.ParagraphFormat.Alignment = ParagraphAlignment.Center;
             style.ParagraphFormat.Font.Bold = false;
             style.ParagraphFormat.Font.Size = 7;
-
             style = document.Styles[StyleNames.Heading1];
             style.ParagraphFormat.Alignment = ParagraphAlignment.Center;
             style.ParagraphFormat.Font.Bold = true;
-
             style = document.Styles[StyleNames.Heading2];
             style.ParagraphFormat.Font.Bold = false;
-
             style = document.Styles[StyleNames.Heading3];
             style.ParagraphFormat.Alignment = ParagraphAlignment.Center;
             style.ParagraphFormat.Font.Bold = true;
             style.ParagraphFormat.Font.Size = 6;
-
             style = document.Styles[StyleNames.Heading4];
             style.ParagraphFormat.Alignment = ParagraphAlignment.Center;
             style.ParagraphFormat.Font.Bold = false;
             style.ParagraphFormat.Font.Size = 8;
-
             style = document.Styles[StyleNames.Heading5];
             style.ParagraphFormat.Alignment = ParagraphAlignment.Justify;
             style.ParagraphFormat.Font.Bold = false;
@@ -60,13 +51,10 @@ namespace apppacheco
 
             Document document = new Document();
             PdfDocument pdfDocument = new PdfDocument();
-
             document.DefaultPageSetup.PageFormat = PageFormat.A4;
-
             document.DefaultPageSetup.LeftMargin = "2cm";
             document.DefaultPageSetup.TopMargin = "2cm";
             setDocumentStyle(ref document);
-
             string footerText = "algo como ";
             setDocumentHeaders2(
                  ref document,
@@ -76,20 +64,14 @@ namespace apppacheco
             {
                 document.LastSection.AddImage(foto);
             }
-
-
-
             PdfDocumentRenderer pdfDocumentRenderer = new PdfDocumentRenderer(false, PdfFontEmbedding.Always);
-
             pdfDocumentRenderer.Document = document;
             pdfDocumentRenderer.RenderDocument();
             string filename = "archivopdf\\pdf.pdf";
             pdfDocumentRenderer.PdfDocument.Save(filename);
             return filename;
-
-        }
-
-
+            }
+        
         public void setDocumentHeaders2(ref Document document, string footerText)
         {
             Section section = document.AddSection();
@@ -99,26 +81,17 @@ namespace apppacheco
             //document.DefaultPageSetup.TopMargin = "2.5cm";
             document.DefaultPageSetup.TopMargin = "3.5cm";
             section.PageSetup.StartingNumber = 1;
-
             HeaderFooter headerPrimaryPage = section.Headers.Primary;
             Table headerTable = headerPrimaryPage.AddTable();
-
             HeaderFooter headerEvenPage = section.Headers.EvenPage;
             Table headerTableEvenPage = headerEvenPage.AddTable();
-
             Paragraph footerParagraphfirstPage = section.Headers.Primary.AddParagraph();
             footerParagraphfirstPage.AddText(footerText);
             footerParagraphfirstPage.Style = StyleNames.Header;
-
             Paragraph footerParagraphEvenPage = section.Headers.EvenPage.AddParagraph();
             footerParagraphEvenPage.AddText(footerText);
             footerParagraphEvenPage.Style = StyleNames.Header;
-
-
-
         }
-
-
     }
 }
 

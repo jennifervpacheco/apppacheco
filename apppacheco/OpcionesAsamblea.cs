@@ -19,7 +19,6 @@ namespace apppacheco
             InitializeComponent();
             this.fecha = fecha;
             this.valor = valor;
-            
         }
 
         private void OpcionesAsamblea_Load(object sender, EventArgs e)

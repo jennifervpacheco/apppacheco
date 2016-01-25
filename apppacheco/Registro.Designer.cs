@@ -101,7 +101,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(829, 84);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Tipo de asistencia a la asmablea\r\nPRESIONE EL NUMERO CORRESPONDIENTE";
+            this.label4.Text = "          Tipo de asistencia a la asmablea\r\nPRESIONE EL NUMERO CORRESPONDIENTE";
             // 
             // Registro
             // 

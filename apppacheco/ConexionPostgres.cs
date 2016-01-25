@@ -25,21 +25,11 @@ namespace apppacheco
             r.Close();
             dynamic array = JsonConvert.DeserializeObject(json);
             return String.Format(
-            "Server={0};" +
-            "Port={1};" +
-            "User Id={2};" +
-            "Password={3};" +
-            "Database={4};",
-            array["ip"],
-            array["puerto"],
-            array["usuario"],
-            array["clave"],
-            array["basededatos"]);
+            "Server={0};" + "Port={1};" + "User Id={2};" + "Password={3};" + "Database={4};", array["ip"], array["puerto"],
+            array["usuario"], array["clave"],  array["basededatos"]);
         }
         public List<Dictionary<string,string>> consultar(string sql)
         {
-
-
             List<Dictionary<string, string>> filas = new List<Dictionary<string, string>>();
             try
             {
