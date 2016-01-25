@@ -70,19 +70,10 @@ namespace apppacheco
             //this.TopMost = true;
             //this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
-            ConexionPostgres conn = new ConexionPostgres();
-            var resultado = conn.consultar("SELECT * FROM modelo.asamblea; ");
-            List<Select> sl = new List<Select>();
-            foreach (Dictionary<string, string> fila in resultado)
-            {
-                int numVal = Int32.Parse(fila["nit"]);
-                // tipoasambleabix.Items.Add(new ListItem ( fila["nombre"], numVal));
-                sl.Add(new Select() { Text = fila["nit"]+"-" +fila["nombre"], Value = fila["nit"] });
-            }
-            comboBox1.DataSource = sl;
-            comboBox1.DisplayMember = "Text";
-            //http://stackoverflow.com/questions/3063320/combobox-adding-text-and-value-to-an-item-no-binding-source 
+            this.cargarComboBoxNitPropiedad();
         }
+
+        
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -114,5 +105,24 @@ namespace apppacheco
             ser.Show();
         }
 
-     }
+        private void button7_Click(object sender, EventArgs e)
+        {
+            this.cargarComboBoxNitPropiedad();
+        }
+        private void cargarComboBoxNitPropiedad()
+        {
+            ConexionPostgres conn = new ConexionPostgres();
+            var resultado = conn.consultar("SELECT * FROM modelo.asamblea; ");
+            List<Select> sl = new List<Select>();
+            foreach (Dictionary<string, string> fila in resultado)
+            {
+                int numVal = Int32.Parse(fila["nit"]);
+                // tipoasambleabix.Items.Add(new ListItem ( fila["nombre"], numVal));
+                sl.Add(new Select() { Text = fila["nit"] + "-" + fila["nombre"], Value = fila["nit"] });
+            }
+            comboBox1.DataSource = sl;
+            comboBox1.DisplayMember = "Text";
+            //http://stackoverflow.com/questions/3063320/combobox-adding-text-and-value-to-an-item-no-binding-source 
+        }
+    }
 }

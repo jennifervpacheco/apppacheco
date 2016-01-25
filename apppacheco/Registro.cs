@@ -47,7 +47,6 @@ namespace apppacheco
                 var resultado = conn.consultar("SELECT * FROM modelo.asamblea; ");
                 var texto = this.lectura.Text;
                 string[] textos = texto.Split('\'');
-                MessageBox.Show(textos[1]);
                 if (e.KeyChar == 49)
                 {
                     string uni = textos[1].Remove(textos[1].Length - 1);

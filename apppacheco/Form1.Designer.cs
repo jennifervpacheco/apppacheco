@@ -50,6 +50,7 @@
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
+            this.button7 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -175,6 +176,7 @@
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.groupBox3.Controls.Add(this.button7);
             this.groupBox3.Controls.Add(this.comboBox1);
             this.groupBox3.Controls.Add(this.dtp);
             this.groupBox3.Controls.Add(this.label6);
@@ -184,7 +186,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(881, 221);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(314, 271);
+            this.groupBox3.Size = new System.Drawing.Size(314, 329);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Opciones asamblea";
@@ -192,16 +194,16 @@
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(59, 82);
+            this.comboBox1.Location = new System.Drawing.Point(71, 82);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(234, 26);
+            this.comboBox1.Size = new System.Drawing.Size(222, 26);
             this.comboBox1.TabIndex = 14;
             // 
             // dtp
             // 
             this.dtp.Location = new System.Drawing.Point(71, 146);
             this.dtp.Name = "dtp";
-            this.dtp.Size = new System.Drawing.Size(200, 24);
+            this.dtp.Size = new System.Drawing.Size(222, 24);
             this.dtp.TabIndex = 1;
             // 
             // label6
@@ -228,9 +230,9 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 85);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 18);
+            this.label5.Size = new System.Drawing.Size(34, 18);
             this.label5.TabIndex = 1;
-            this.label5.Text = "Nit";
+            this.label5.Text = "Nit:";
             // 
             // label4
             // 
@@ -275,6 +277,16 @@
             this.label7.Size = new System.Drawing.Size(359, 120);
             this.label7.TabIndex = 4;
             this.label7.Text = resources.GetString("label7.Text");
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(110, 261);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(172, 36);
+            this.button7.TabIndex = 7;
+            this.button7.Text = "Actualizar";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Form1
             // 
@@ -330,6 +342,7 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button button7;
     }
 }
 
