@@ -311,7 +311,7 @@
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(180, 35);
             this.button2.TabIndex = 0;
-            this.button2.Text = "Iniciar Votación";
+            this.button2.Text = "Registrar Pregunta";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -340,7 +340,7 @@
             this.dtp.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtp.Location = new System.Drawing.Point(585, 198);
             this.dtp.Name = "dtp";
-            this.dtp.Size = new System.Drawing.Size(200, 24);
+            this.dtp.Size = new System.Drawing.Size(234, 24);
             this.dtp.TabIndex = 15;
             // 
             // label2
@@ -359,15 +359,15 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(522, 165);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(29, 18);
+            this.label5.Size = new System.Drawing.Size(34, 18);
             this.label5.TabIndex = 16;
-            this.label5.Text = "Nit";
+            this.label5.Text = "Nit:";
             // 
             // Pregunta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(997, 741);
+            this.ClientSize = new System.Drawing.Size(997, 733);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.dtp);
             this.Controls.Add(this.label2);

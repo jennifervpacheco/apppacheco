@@ -83,8 +83,8 @@ namespace apppacheco
 
         private void button5_Click(object sender, EventArgs e)
         {
-            Select sl1 = comboBox1.SelectedItem as Select;
-            string valor = sl1.Value;
+            Select sl = comboBox1.SelectedItem as Select;
+            string valor = sl.Value;
             string fecha = dtp.Value.Date.Year + "-" + dtp.Value.Date.Month + "-" + dtp.Value.Date.Day;
             ConexionPostgres conn = new ConexionPostgres();
             var cadenaSql = "select count(*)  from modelo.asamblea  where nit='"+ valor+ "' AND fecha='"+fecha+"';";
@@ -118,11 +118,16 @@ namespace apppacheco
             {
                 int numVal = Int32.Parse(fila["nit"]);
                 // tipoasambleabix.Items.Add(new ListItem ( fila["nombre"], numVal));
-                sl.Add(new Select() { Text = fila["nit"] + "-" + fila["nombre"], Value = fila["nit"] });
+                sl.Add(new Select() { Text = fila["nit"] + "-" + fila["nombre"]+"-"+fila["fecha"], Value = fila["nit"] });
             }
             comboBox1.DataSource = sl;
             comboBox1.DisplayMember = "Text";
             //http://stackoverflow.com/questions/3063320/combobox-adding-text-and-value-to-an-item-no-binding-source 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

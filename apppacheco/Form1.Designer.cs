@@ -41,6 +41,7 @@
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button7 = new System.Windows.Forms.Button();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.dtp = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
@@ -50,7 +51,6 @@
             this.button6 = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -184,26 +184,37 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(881, 221);
+            this.groupBox3.Location = new System.Drawing.Point(830, 221);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(314, 329);
+            this.groupBox3.Size = new System.Drawing.Size(398, 329);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Opciones asamblea";
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(110, 261);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(172, 36);
+            this.button7.TabIndex = 7;
+            this.button7.Text = "Actualizar";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // comboBox1
             // 
             this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(71, 82);
+            this.comboBox1.Location = new System.Drawing.Point(46, 82);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(222, 26);
+            this.comboBox1.Size = new System.Drawing.Size(346, 26);
             this.comboBox1.TabIndex = 14;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // dtp
             // 
             this.dtp.Location = new System.Drawing.Point(71, 146);
             this.dtp.Name = "dtp";
-            this.dtp.Size = new System.Drawing.Size(222, 24);
+            this.dtp.Size = new System.Drawing.Size(290, 24);
             this.dtp.TabIndex = 1;
             // 
             // label6
@@ -261,7 +272,7 @@
             this.groupBox4.Controls.Add(this.label7);
             this.groupBox4.Controls.Add(this.button6);
             this.groupBox4.Font = new System.Drawing.Font("MS Reference Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(463, 221);
+            this.groupBox4.Location = new System.Drawing.Point(437, 221);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(373, 271);
             this.groupBox4.TabIndex = 6;
@@ -277,16 +288,6 @@
             this.label7.Size = new System.Drawing.Size(359, 120);
             this.label7.TabIndex = 4;
             this.label7.Text = resources.GetString("label7.Text");
-            // 
-            // button7
-            // 
-            this.button7.Location = new System.Drawing.Point(110, 261);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(172, 36);
-            this.button7.TabIndex = 7;
-            this.button7.Text = "Actualizar";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
             // Form1
             // 

@@ -37,7 +37,7 @@ namespace apppacheco
             {
                 int numVal = Int32.Parse(fila["nit"]);
                 // tipoasambleabix.Items.Add(new ListItem ( fila["nombre"], numVal));
-                sl.Add(new Select() { Text = fila["nit"] + "-" + fila["nombre"], Value = fila["nit"] });
+                sl.Add(new Select() { Text = fila["nit"] + "- " + fila["nombre"], Value = fila["nit"] });
             }
             comboBox1.DataSource = sl;
             comboBox1.DisplayMember = "Text";

@@ -31,17 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(IniciarAsamblea));
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.numunidades = new System.Windows.Forms.TextBox();
             this.nombrePropiedad = new System.Windows.Forms.TextBox();
             this.nit = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.nitasam = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dtp = new System.Windows.Forms.DateTimePicker();
             this.tipoasambleabix = new System.Windows.Forms.ComboBox();
@@ -72,10 +70,8 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.numunidades);
             this.groupBox1.Controls.Add(this.nombrePropiedad);
             this.groupBox1.Controls.Add(this.nit);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.button1);
@@ -87,35 +83,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registrar La Propiedad Horizontal";
             // 
-            // numunidades
-            // 
-            this.numunidades.Location = new System.Drawing.Point(210, 150);
-            this.numunidades.Name = "numunidades";
-            this.numunidades.Size = new System.Drawing.Size(116, 24);
-            this.numunidades.TabIndex = 2;
-            // 
             // nombrePropiedad
             // 
-            this.nombrePropiedad.Location = new System.Drawing.Point(210, 98);
+            this.nombrePropiedad.Location = new System.Drawing.Point(172, 98);
             this.nombrePropiedad.Name = "nombrePropiedad";
-            this.nombrePropiedad.Size = new System.Drawing.Size(116, 24);
+            this.nombrePropiedad.Size = new System.Drawing.Size(250, 24);
             this.nombrePropiedad.TabIndex = 1;
             // 
             // nit
             // 
-            this.nit.Location = new System.Drawing.Point(210, 55);
+            this.nit.Location = new System.Drawing.Point(172, 55);
             this.nit.Name = "nit";
-            this.nit.Size = new System.Drawing.Size(116, 24);
+            this.nit.Size = new System.Drawing.Size(250, 24);
             this.nit.TabIndex = 0;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 150);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(168, 18);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Numero de unidades:";
             // 
             // label3
             // 
@@ -167,7 +147,7 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.nitasam);
+            this.groupBox2.Controls.Add(this.comboBox1);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.dtp);
             this.groupBox2.Controls.Add(this.tipoasambleabix);
@@ -188,12 +168,13 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "2. Datos de la asamblea.";
             // 
-            // nitasam
+            // comboBox1
             // 
-            this.nitasam.Location = new System.Drawing.Point(206, 38);
-            this.nitasam.Name = "nitasam";
-            this.nitasam.Size = new System.Drawing.Size(116, 24);
-            this.nitasam.TabIndex = 0;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(201, 38);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(218, 26);
+            this.comboBox1.TabIndex = 8;
             // 
             // label10
             // 
@@ -216,7 +197,7 @@
             this.tipoasambleabix.FormattingEnabled = true;
             this.tipoasambleabix.Location = new System.Drawing.Point(206, 247);
             this.tipoasambleabix.Name = "tipoasambleabix";
-            this.tipoasambleabix.Size = new System.Drawing.Size(140, 26);
+            this.tipoasambleabix.Size = new System.Drawing.Size(213, 26);
             this.tipoasambleabix.TabIndex = 5;
             this.tipoasambleabix.SelectedIndexChanged += new System.EventHandler(this.tipoasambleabix_SelectedIndexChanged);
             // 
@@ -234,21 +215,21 @@
             // 
             this.horafinal.Location = new System.Drawing.Point(206, 202);
             this.horafinal.Name = "horafinal";
-            this.horafinal.Size = new System.Drawing.Size(116, 24);
+            this.horafinal.Size = new System.Drawing.Size(213, 24);
             this.horafinal.TabIndex = 4;
             // 
             // horaasamblea
             // 
             this.horaasamblea.Location = new System.Drawing.Point(206, 163);
             this.horaasamblea.Name = "horaasamblea";
-            this.horaasamblea.Size = new System.Drawing.Size(116, 24);
+            this.horaasamblea.Size = new System.Drawing.Size(213, 24);
             this.horaasamblea.TabIndex = 3;
             // 
             // nombreasamblea
             // 
             this.nombreasamblea.Location = new System.Drawing.Point(206, 78);
             this.nombreasamblea.Name = "nombreasamblea";
-            this.nombreasamblea.Size = new System.Drawing.Size(116, 24);
+            this.nombreasamblea.Size = new System.Drawing.Size(213, 24);
             this.nombreasamblea.TabIndex = 1;
             // 
             // label9
@@ -334,10 +315,8 @@
         #endregion
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox numunidades;
         private System.Windows.Forms.TextBox nombrePropiedad;
         private System.Windows.Forms.TextBox nit;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;
@@ -356,7 +335,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.DateTimePicker dtp;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox nitasam;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
