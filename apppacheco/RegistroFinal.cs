@@ -55,11 +55,19 @@ namespace apppacheco
                         string uni = textos[1].Remove(textos[1].Length - 1);
                         MessageBox.Show("UNIDAD " + textos[1] + "LA OPCION SELECTIONADA FUE: '" +
                         e.KeyChar.ToString() + "'PODER .");
-                    var cadenaSql = "UPDATE modelo.asamblea_unidad_residencial SET id_tipo_asistencia_final ='2' WHERE nit = '" + textos[0] + "'AND numero_unidad= '" + uni + "' AND fecha='" + this.fecha + "' AND id_tipo_asistencia_final ='0';";
+                    var cadenaSql = "UPDATE modelo.asamblea_unidad_residencial SET id_tipo_asistencia_final ='2' WHERE nit = '" + textos[0] + "'AND numero_unidad= '" + uni + "' AND fecha='" + this.fecha + "' AND id_tipo_asistencia_final ='3';";
                     conn.registrar(cadenaSql);
                     }
+                if (e.KeyChar == 51)
+                {
+                    string uni = textos[1].Remove(textos[1].Length - 1);
+                    MessageBox.Show("UNIDAD " + textos[1] + "LA OPCION SELECTIONADA FUE: '" +
+                    e.KeyChar.ToString() + "'DESCARGAR ANTES DE FINALIZAR .");
+                    var cadenaSql = "UPDATE modelo.asamblea_unidad_residencial SET id_tipo_asistencia_final ='4' WHERE nit = '" + textos[0] + "'AND numero_unidad= '" + uni + "' AND fecha='" + this.fecha + "' AND id_tipo_asistencia_final ='3';";
+                    conn.registrar(cadenaSql);
+                }
 
-                    entro = false;
+                entro = false;
                 }
             }
            
