@@ -46,6 +46,7 @@ namespace apppacheco
 
         private void button2_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("ESTE PROCESO TARDARA UNOS MINUTOS, ESPERE MIENTRAS SE GENERA EL ARCHIVO, SALDRA LA CONFIRMACION DEL MISMO");
             ConexionPostgres conn = new ConexionPostgres();
             Select sl1 = comboBox1.SelectedItem as Select;
             string nit = sl1.Value;

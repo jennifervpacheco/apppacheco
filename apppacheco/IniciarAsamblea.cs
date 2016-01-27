@@ -79,8 +79,8 @@ namespace apppacheco
 
         private void button3_Click(object sender, EventArgs e)
         {
-            Pregunta miformulario = new Pregunta();
-            miformulario.Show();
+            //Pregunta miformulario = new Pregunta();
+            //miformulario.Show();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

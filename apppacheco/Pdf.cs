@@ -55,7 +55,7 @@ namespace apppacheco
             document.DefaultPageSetup.LeftMargin = "2cm";
             document.DefaultPageSetup.TopMargin = "2cm";
             setDocumentStyle(ref document);
-            string footerText = "algo como ";
+            string footerText = "LISTADO DE CODIGO DE BARRAS POR PROPIETARIO CON NIT Y NUMERO DE UNIDAD ";
             setDocumentHeaders2(
                  ref document,
                  footerText
@@ -67,7 +67,7 @@ namespace apppacheco
             PdfDocumentRenderer pdfDocumentRenderer = new PdfDocumentRenderer(false, PdfFontEmbedding.Always);
             pdfDocumentRenderer.Document = document;
             pdfDocumentRenderer.RenderDocument();
-            string filename = "archivopdf\\pdf.pdf";
+            string filename = "archivopdf\\ARCHIVO_CODIGO_DE_BARRAS.pdf";
             pdfDocumentRenderer.PdfDocument.Save(filename);
             return filename;
             }

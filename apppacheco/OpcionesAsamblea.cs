@@ -42,8 +42,8 @@ namespace apppacheco
 
         private void button4_Click(object sender, EventArgs e)
         {
-            Votacion vo = new Votacion(this.fecha, this.valor );
-            vo.Show();
+            Pregunta pre = new Pregunta(this.fecha, this.valor);
+            pre.Show();
         }
 
         private void button1_Click(object sender, EventArgs e)

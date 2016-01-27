@@ -12,9 +12,13 @@ namespace apppacheco
 {
     public partial class Pregunta : Form
     {
-        public Pregunta()
+        private string fecha;
+        private string valor;
+        public Pregunta(string fecha, string valor)
         {
             InitializeComponent();
+            this.fecha = fecha;
+            this.valor = valor;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -42,9 +46,8 @@ namespace apppacheco
             var cadenaSql = "INSERT INTO modelo.pregunta(pregunta) VALUES('"+ textBox12.Text+ "') RETURNING id_pregunta;";
             var id_pregunta = conn.consultar(cadenaSql)[0]["id_pregunta"];
             Select sl1 = comboBox1.SelectedItem as Select;
-            string valor = sl1.Value;
-            string fecha = dtp.Value.Date.Year + "-" + dtp.Value.Date.Month + "-" + dtp.Value.Date.Day;
-            var cadenaSql2 = "INSERT INTO modelo.pregunta_actual(nit, fecha,id_pregunta) VALUES('" + valor + "','"+fecha+"','"+id_pregunta+"') ;";
+            //var cadenaSql2 = "INSERT INTO modelo.pregunta_actual(nit, fecha,id_pregunta) VALUES('" + this.valor + "','"+this.fecha+"','"+id_pregunta+"') ;";
+            var cadenaSql2 = "DELETE FROM modelo.pregunta_actual WHERE nit = '"+this.valor+"'; INSERT INTO modelo.pregunta_actual(nit, fecha, id_pregunta) VALUES('"+this.valor+"', '"+this.fecha+"', '"+id_pregunta+"'); ";
             conn.registrar(cadenaSql2);
             for (int i = 0; i < opciones.ToArray().Length; i++)
             {
@@ -53,6 +56,8 @@ namespace apppacheco
                 conn.registrar(cadenaSql1);
             }
             MessageBox.Show("LA PREGRUNTA HA SIDO REGISTRADA CONTINUE CON LA VOTACION");
+            Votacion voto = new Votacion(this.fecha, this.valor);
+            voto.Show();
  }
 
         private void button1_Click(object sender, EventArgs e)

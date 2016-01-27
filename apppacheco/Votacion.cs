@@ -82,7 +82,7 @@ namespace apppacheco
             //this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             ConexionPostgres conn = new ConexionPostgres();
-            string cadenaSql = "SELECT id_pregunta FROM modelo.pregunta_actual WHERE nit = '" + valor + "' AND fecha = '" + fecha + "';";
+            string cadenaSql = "SELECT id_pregunta FROM modelo.pregunta_actual WHERE nit = '" + this.valor + "' AND fecha = '" + this.fecha + "';";
             var resultado = conn.consultar(cadenaSql);
             this.id_pregunta_actual = resultado[0]["id_pregunta"];
             string cadenaSql1 = "SELECT pregunta FROM modelo.pregunta WHERE id_pregunta='" + id_pregunta_actual + "';";
