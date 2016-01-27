@@ -69,7 +69,10 @@ namespace apppacheco
             cadenaSql = "SELECT sum(coeficiente) FROM modelo.unidad_residencial WHERE nit='" + this.valor + "';";
             double registradosCasoCoeficientes = Double.Parse(conn.consultar(cadenaSql)[0]["sum"]);
 
-            double porcentaje = (100 * asistenciaCasoCoeficientes / registradosCasoCoeficientes);
+            cadenaSql = "SELECT sum(b.coeficiente) FROM modelo.asamblea_unidad_residencial AS a LEFT JOIN modelo.unidad_residencial AS b ON (a.numero_unidad = b.numero_unidad AND a.nit = b.nit) WHERE a.nit='" + this.valor + "' AND a.fecha='" + this.fecha + "' and id_tipo_asistencia_final ='4';";
+            double registradosCasoUnidadesdescargue = Double.Parse(conn.consultar(cadenaSql)[0]["sum"]);
+
+            double porcentaje = (100 * (asistenciaCasoCoeficientes- registradosCasoUnidadesdescargue) / registradosCasoCoeficientes);
             porcentaje = Math.Round(porcentaje, 2);
             quorum = (porcentaje).ToString();
 
