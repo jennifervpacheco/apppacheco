@@ -97,6 +97,12 @@
     <Compile Include="ConfiguracionServidorBaseDatos.Designer.cs">
       <DependentUpon>ConfiguracionServidorBaseDatos.cs</DependentUpon>
     </Compile>
+    <Compile Include="docs.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="docs.Designer.cs">
+      <DependentUpon>docs.cs</DependentUpon>
+    </Compile>
     <Compile Include="GenerarCodigo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +157,9 @@
     </Compile>
     <EmbeddedResource Include="ConfiguracionServidorBaseDatos.resx">
       <DependentUpon>ConfiguracionServidorBaseDatos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="docs.resx">
+      <DependentUpon>docs.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GenerarCodigo.resx">
       <DependentUpon>GenerarCodigo.cs</DependentUpon>

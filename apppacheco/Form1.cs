@@ -10,6 +10,7 @@ using System.Windows.Forms;
 //para el excel
 using Excel;
 using System.IO;
+using Excel = Microsoft.Office.Interop.Excel;
 
 namespace apppacheco
 {

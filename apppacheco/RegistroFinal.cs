@@ -42,7 +42,8 @@ namespace apppacheco
                     var texto = this.textBox1.Text;
                     string[] textos = texto.Split('\'');
                     MessageBox.Show(textos[1]);
-                    if (e.KeyChar == 49)
+                // 49=1 50=2 51=3
+                if (e.KeyChar == '1')
                     {
                         string uni = textos[1].Remove(textos[1].Length - 1);
                         MessageBox.Show("UNIDAD " + textos[1] + "LA OPCION SELECTIONADA FUE: '" +
@@ -50,7 +51,7 @@ namespace apppacheco
                         var cadenaSql = "UPDATE modelo.asamblea_unidad_residencial SET id_tipo_asistencia_final ='1' WHERE nit = '" + textos[0] + "'AND numero_unidad= '"+uni+ "' AND fecha='" + this.fecha + "' AND id_tipo_asistencia_final ='3';";
                         conn.registrar(cadenaSql);
                     }
-                    if (e.KeyChar == 50)
+                    if (e.KeyChar == '2')
                     {
                         string uni = textos[1].Remove(textos[1].Length - 1);
                         MessageBox.Show("UNIDAD " + textos[1] + "LA OPCION SELECTIONADA FUE: '" +
@@ -58,7 +59,7 @@ namespace apppacheco
                     var cadenaSql = "UPDATE modelo.asamblea_unidad_residencial SET id_tipo_asistencia_final ='2' WHERE nit = '" + textos[0] + "'AND numero_unidad= '" + uni + "' AND fecha='" + this.fecha + "' AND id_tipo_asistencia_final ='3';";
                     conn.registrar(cadenaSql);
                     }
-                if (e.KeyChar == 51)
+                if (e.KeyChar == '3')
                 {
                     string uni = textos[1].Remove(textos[1].Length - 1);
                     MessageBox.Show("UNIDAD " + textos[1] + "LA OPCION SELECTIONADA FUE: '" +
