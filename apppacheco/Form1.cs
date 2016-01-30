@@ -7,10 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-//para el excel
+//para leer el excel https://github.com/ExcelDataReader/ExcelDataReader
 using Excel;
 using System.IO;
-using Excel = Microsoft.Office.Interop.Excel;
+//Queda vetado el uso de Interop!!!
+//using Excel = Microsoft.Office.Interop.Excel;
 
 namespace apppacheco
 {

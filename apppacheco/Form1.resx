@@ -901,11 +901,11 @@
   </metadata>
   <data name="label7.Text" xml:space="preserve">
     <value>Este espacio es para los ordenadores que 
-actuaran como clientes, procedimiento 
+actuarán como clientes, procedimiento 
 que se debe efectuar antes de comenzar 
-el evento en ese caso la Asamblea, los
- ordenadores cliente solo podran acceder 
-a opciones asamblea.</value>
+el evento. En ese caso la Asamblea, los
+ordenadores cliente solo podrán acceder 
+a &lt;&lt;opciones asamblea&gt;&gt;.</value>
   </data>
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>28</value>

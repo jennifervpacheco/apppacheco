@@ -97,11 +97,11 @@
     <Compile Include="ConfiguracionServidorBaseDatos.Designer.cs">
       <DependentUpon>ConfiguracionServidorBaseDatos.cs</DependentUpon>
     </Compile>
-    <Compile Include="docs.cs">
+    <Compile Include="Documentos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="docs.Designer.cs">
-      <DependentUpon>docs.cs</DependentUpon>
+    <Compile Include="Documentos.Designer.cs">
+      <DependentUpon>Documentos.cs</DependentUpon>
     </Compile>
     <Compile Include="GenerarCodigo.cs">
       <SubType>Form</SubType>
@@ -158,8 +158,8 @@
     <EmbeddedResource Include="ConfiguracionServidorBaseDatos.resx">
       <DependentUpon>ConfiguracionServidorBaseDatos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="docs.resx">
-      <DependentUpon>docs.cs</DependentUpon>
+    <EmbeddedResource Include="Documentos.resx">
+      <DependentUpon>Documentos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="GenerarCodigo.resx">
       <DependentUpon>GenerarCodigo.cs</DependentUpon>
