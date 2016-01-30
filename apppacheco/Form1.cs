@@ -12,6 +12,9 @@ using Excel;
 using System.IO;
 //Queda vetado el uso de Interop!!!
 //using Excel = Microsoft.Office.Interop.Excel;
+//Alternativas:
+//http://www.codeproject.com/Articles/33850/Generate-Excel-files-without-using-Microsoft-Excel
+//
 
 namespace apppacheco
 {
