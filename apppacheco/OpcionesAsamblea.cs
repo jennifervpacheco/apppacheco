@@ -167,8 +167,12 @@ namespace apppacheco
             //OTRA CELDA
             cell = primerFilaExcel.CreateCell(8);
             cell.CellStyle = style;
+            cell.SetCellValue("");
+            //OTRA CELDA
+            cell = primerFilaExcel.CreateCell(9);
+            cell.CellStyle = style;
             cell.SetCellValue("QUORUM FINAL");
-            
+
             //Se desocupa la variables para que no ocupen espacio
             cell = null;
             primerFilaExcel = null;
@@ -191,13 +195,9 @@ namespace apppacheco
                 filaExcel.CreateCell(6).SetCellValue(fila["tipo_asistencia_final"]);
 
                 if (fila["tipo_asistencia_inicial"] == "no asistio")
-
                 {
                     contadornoasistio++;
                 }
-
-               filaExcel.CreateCell(7).SetCellValue(contadornoasistio);
-                //aqui lo muestra en toda la fila pero no se como ponerlo en una sola celda al igual que los otros
                 if (fila["tipo_asistencia_inicial"] == "poder")
                 {
                     contadornpoder++;
@@ -206,8 +206,6 @@ namespace apppacheco
                 {
                     contadorpresen++;
                 }
-                
-
                 if (fila["tipo_asistencia_final"] == "no asistio")
                 {
                     contadornoasistiof++;
@@ -220,9 +218,26 @@ namespace apppacheco
                 {
                     contadorpresenf++;
                 }
-
             }
-           
+            var rowExcel = sheet.GetRow(1);
+            rowExcel.CreateCell(7).SetCellValue("No Asistió");
+            rowExcel.CreateCell(8).SetCellValue(contadornoasistio);
+            rowExcel.CreateCell(9).SetCellValue("No Asistió");
+            rowExcel.CreateCell(10).SetCellValue(contadornoasistiof);
+
+            rowExcel = sheet.GetRow(2);
+            rowExcel.CreateCell(7).SetCellValue("Por Poder");
+            rowExcel.CreateCell(8).SetCellValue(contadornpoder);
+            rowExcel.CreateCell(9).SetCellValue("Por Poder");
+            rowExcel.CreateCell(10).SetCellValue(contadornpoderf);
+
+            rowExcel = sheet.GetRow(3);
+            rowExcel.CreateCell(7).SetCellValue("Presencial");
+            rowExcel.CreateCell(8).SetCellValue(contadorpresen);
+            rowExcel.CreateCell(9).SetCellValue("Presencial");
+            rowExcel.CreateCell(10).SetCellValue(contadorpresenf);
+
+
             using (var fs = new FileStream("lista_asistencia"+this.valor+".xlsx", FileMode.Create, FileAccess.Write))
             {
                 workbook.Write(fs);
