@@ -237,7 +237,7 @@ namespace apppacheco
             rowExcel.CreateCell(9).SetCellValue("Presencial");
             rowExcel.CreateCell(10).SetCellValue(contadorpresenf);
 
-
+            //Falta validar si el archivo está o no abierto por otra aplicación...
             using (var fs = new FileStream("lista_asistencia"+this.valor+".xlsx", FileMode.Create, FileAccess.Write))
             {
                 workbook.Write(fs);
