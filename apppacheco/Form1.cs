@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 //para leer el excel https://github.com/ExcelDataReader/ExcelDataReader
-using Excel;
+//using Excel;
 using System.IO;
 //Queda vetado el uso de Interop!!!
 //using Excel = Microsoft.Office.Interop.Excel;
 //Alternativas:
 //http://www.codeproject.com/Articles/33850/Generate-Excel-files-without-using-Microsoft-Excel
 //
+using NPOI.XSSF.UserModel;
+using System.IO; // File.Exists()
 
 namespace apppacheco
 {
@@ -36,25 +38,7 @@ namespace apppacheco
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            string ruta = this.buscarDoc();
-            ConexionPostgres conn = new ConexionPostgres();
-            var stream = File.Open(ruta, FileMode.Open, FileAccess.Read);
-            IExcelDataReader excelReader = ExcelReaderFactory.CreateOpenXmlReader(stream);
-            DataSet result = excelReader.AsDataSet();
-            //excelReader.IsFirstRowAsColumnNames = true;
-            //DataSet columnnames = excelReader.AsDataSet();
-            foreach (DataRow row in result.Tables[0].Rows.Cast<DataRow>().Skip(1))
-            {
-                var cadenaSql = "INSERT INTO modelo.unidad_residencial(nit, numero_unidad, nombre_completo, coeficiente, documento) values ('" + row.ItemArray[0] + "','" + row.ItemArray[1] + "','" + row.ItemArray[2] + "','" + row.ItemArray[3] + "','" + row.ItemArray[4] + "');";
-                conn.registrar(cadenaSql);
-            }
-            excelReader.Close();
-            MessageBox.Show("Datos cargados correctamente");
-        }
-
-        private string buscarDoc()
+         private string buscarDoc()
         {
             string file = "";
             DialogResult result = openFileDialog1.ShowDialog();
@@ -62,9 +46,95 @@ namespace apppacheco
             {
                 file = openFileDialog1.FileName;
             }
-            return file ;
-         }
+            return file;
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            string ruta = this.buscarDoc();
+            ConexionPostgres conn = new ConexionPostgres();
+            FileStream fs;
+            try
+            {
+                fs = new FileStream(ruta, FileMode.Open, FileAccess.Read);
+            }
+            catch
+            {
+                MessageBox.Show("El archivo está siendo usado por otro programa. Asegurese de haber seleccionado el archivo correcto.");
+                return;
+            }
+
+            XSSFWorkbook wb = new XSSFWorkbook(fs);
+
+            string nombreHoja = "";
+            for (int i = 0; i < wb.Count; i++)
+            {
+                nombreHoja = wb.GetSheetAt(i).SheetName;
+            }
+
+            XSSFSheet sheet = (XSSFSheet)wb.GetSheet(nombreHoja);
+
+            try
+            {
+                for (int row = 1; row <= sheet.LastRowNum; row++)
+                {
+                    if (sheet.GetRow(row) != null) //null is when the row only contains empty cells 
+                    {
+                        var fila = sheet.GetRow(row);
+                        var nit = fila.GetCell(0).ToString();
+                        var numero_unidad = fila.GetCell(1).ToString();
+                        var nombre_completo = fila.GetCell(2).ToString();
+                        var coeficiente = fila.GetCell(3).ToString().Replace(",", ".");
+                        var documento = fila.GetCell(4).ToString();
+                        var cadenaSql = string.Format(
+                            @"INSERT INTO modelo.unidad_residencial
+                            (
+                            nit,
+                            numero_unidad,
+                            nombre_completo,
+                            coeficiente,
+                            documento
+                            )
+                            VALUES
+                            (
+                            '{0}',
+                            '{1}',
+                            '{2}',
+                            '{3}',
+                            '{4}'
+                            );",
+                                nit,
+                                numero_unidad,
+                                nombre_completo,
+                                coeficiente,
+                                documento
+                            );
+                        var resultado = conn.registrar(cadenaSql);
+                        if(!resultado)//Falló la consulta
+                        {
+                            MessageBox.Show("El registro NIT:"+nit
+                                + ", Número Unidad:" + numero_unidad
+                                + ", Nombre Completo:" + nombre_completo
+                                + ", Coeficiente:" + coeficiente
+                                + ", Número Documento:" + documento 
+                                + " ,no pudo ser completado de manera exitosa, revise los datos (están mal o ya existen).");
+                            MessageBox.Show(cadenaSql);
+                            return;
+                        }
+                    }
+                }
+
+                //MessageBoxEx.Show("Datos cargados correctamente",2000);
+                MessageBox.Show("Datos cargados correctamente.");
+            }
+            catch
+            {
+                MessageBox.Show("Algo pasó con la carga de archivos, asegúrese de que ha cargado el archivo correcto con datos válidos.");
+            }
+            //Se cierra el archivo
+            fs.Close();
+        }
+ 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
 

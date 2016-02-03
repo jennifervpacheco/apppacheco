@@ -20,9 +20,16 @@ namespace apppacheco
         private void button1_Click(object sender, EventArgs e)
         {
             ConexionPostgres conn = new ConexionPostgres();
-            var cadenaSql = "INSERT INTO modelo.propiedad_horizontal(nit, nombre, numero_propiedades) values ('"+nit.Text+"','"+nombrePropiedad.Text+"','0');";
-            conn.registrar(cadenaSql);
-            MessageBox.Show("LA PROPIEDAD HA SIDO REGISTRADA CONTINUE CON EL REGISTRO DE LA ASAMBLEA");
+            var cadenaSql = "INSERT INTO modelo.propiedad_horizontal(nit, nombre) values ('"+nit.Text+"','"+nombrePropiedad.Text+"');";
+            var resultado= conn.registrar(cadenaSql);
+            if (resultado)
+            {
+                MessageBox.Show("LA PROPIEDAD HA SIDO REGISTRADA CONTINUE CON EL REGISTRO DE LA ASAMBLEA");
+            }
+            else {
+                MessageBox.Show("LA PROPIEDAD NO HA SIDO REGISTRADA ");
+
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -54,7 +61,7 @@ namespace apppacheco
             {
                 int numVal = Int32.Parse(fila["id_tipo_asamblea"]);
                // tipoasambleabix.Items.Add(new ListItem ( fila["nombre"], numVal));
-                sl.Add(new Select() { Text =  fila["nombre"], Value = fila["id_tipo_asamblea"] });
+                sl.Add(new Select() { Text =  fila["tipo"], Value = fila["id_tipo_asamblea"] });
             }
             tipoasambleabix.DataSource = sl;
             tipoasambleabix.DisplayMember = "Text";
