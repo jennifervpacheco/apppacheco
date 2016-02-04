@@ -111,7 +111,7 @@ namespace apppacheco
             XSSFSheet sheet = (XSSFSheet)workbook.CreateSheet("Sheet1"); ;
             //Creo una variable que es similar a la que se retorna en las consultas SQL
 
-            var cadenaSql = " SELECT ur.nit, ur.numero_unidad, ur.nombre_completo, ur.coeficiente, ur.documento, CASE WHEN aur.id_tipo_asistencia_inicial=1 THEN 'presencial' WHEN aur.id_tipo_asistencia_inicial=2 THEN 'poder' WHEN aur.id_tipo_asistencia_inicial=3 THEN 'no asistio' ELSE 'no asistio' END AS tipo_asistencia_inicial, CASE WHEN aur.id_tipo_asistencia_final=1 THEN 'presencial' WHEN aur.id_tipo_asistencia_final=2 THEN 'poder' WHEN aur.id_tipo_asistencia_final=3 THEN 'no asistio' WHEN aur.id_tipo_asistencia_final=4 THEN 'se retiro antes de finalizar' ELSE 'no asistio' END AS tipo_asistencia_final FROM modelo.unidad_residencial AS ur LEFT OUTER JOIN modelo.asamblea_unidad_residencial AS aur ON ur.numero_unidad = aur.numero_unidad WHERE ur.nit='"+this.valor+"' order by ur.numero_unidad asc;";
+            var cadenaSql = " SELECT ur.nit, ur.numero_unidad, ur.nombre_completo, ur.coeficiente, ur.documento, CASE WHEN aur.id_tipo_asistencia_inicial=1 THEN 'presencial' WHEN aur.id_tipo_asistencia_inicial=2 THEN 'poder' WHEN aur.id_tipo_asistencia_inicial=3 THEN 'no asistio' ELSE 'no asistio' END AS tipo_asistencia_inicial, CASE WHEN aur.id_tipo_asistencia_final=1 THEN 'presencial' WHEN aur.id_tipo_asistencia_final=2 THEN 'poder' WHEN aur.id_tipo_asistencia_final=3 THEN 'no asistio' WHEN aur.id_tipo_asistencia_final=4 THEN 'se retiro antes de finalizar' ELSE 'no asistio' END AS tipo_asistencia_final FROM modelo.unidad_residencial AS ur LEFT OUTER JOIN modelo.asamblea_unidad_residencial AS aur ON ur.numero_unidad = aur.numero_unidad WHERE ur.nit='" + this.valor + "' order by ur.numero_unidad asc;";
             var resultado = conn.consultar(cadenaSql);
 
 
@@ -248,7 +248,7 @@ namespace apppacheco
             rowExcel.CreateCell(10).SetCellValue(contadorpresenf);
 
             //Falta validar si el archivo está o no abierto por otra aplicación...
-            using (var fs = new FileStream("lista_asistencia"+this.valor+".xlsx", FileMode.Create, FileAccess.Write))
+            using (var fs = new FileStream("lista_asistencia" + this.valor + ".xlsx", FileMode.Create, FileAccess.Write))
             {
                 workbook.Write(fs);
                 fs.Close();
@@ -257,7 +257,7 @@ namespace apppacheco
 
             }
 
-            
+
             string quorum = "";
 
             var cadenaSql2 = "SELECT sum(b.coeficiente) FROM modelo.asamblea_unidad_residencial AS a LEFT JOIN modelo.unidad_residencial AS b ON (a.numero_unidad = b.numero_unidad AND a.nit = b.nit) WHERE a.nit='" + this.valor + "' AND a.fecha='" + this.fecha + "';";
@@ -279,7 +279,7 @@ namespace apppacheco
 
                 rowExcel = sheet.GetRow(6);
                 rowExcel.CreateCell(9).SetCellValue("COEFICIENTE");
-                rowExcel.CreateCell(10).SetCellValue(quorum+"%");
+                rowExcel.CreateCell(10).SetCellValue(quorum + "%");
             }
             else
             {
@@ -292,6 +292,85 @@ namespace apppacheco
             }
 
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ConexionPostgres conn = new ConexionPostgres();
+            //Cómo tú usaste XLSX para la lectura de archivos utilicé esta librería
+            //Si quieres XlS sería otro cuento
+            //Se crea un libro de trabajo (como siempre pueden ser atributos de la clase si se desea usar en varios m[etodos)
+            XSSFWorkbook workbook = new XSSFWorkbook();
+            //Se crea una hoja para el libro de la (hoja de cálculo)
+            XSSFSheet sheet = (XSSFSheet)workbook.CreateSheet("Sheet1"); ;
+            //Creo una variable que es similar a la que se retorna en las consultas SQL
+
+            var cadenaSql = "  SELECT ur.nit,  ur.numero_unidad,  ur.nombre_completo,  ur.coeficiente,  v.id_opcion FROM modelo.unidad_residencial AS ur LEFT OUTER JOIN modelo.voto AS v ON ur.numero_unidad = v.numero_unidad  WHERE ur.nit = '999999999'   order by ur.numero_unidad asc;";
+            var resultado = conn.consultar(cadenaSql);
+
+            //Se escriben las cabeceras del reporte, primero se crea la fila
+            var primerFilaExcel = sheet.CreateRow(0);
+            var segundaFilaExcel = sheet.CreateRow(1);
+
+            //También creo una fuente NEGRILLA para ponerselas a esas celdas
+            var boldFont = workbook.CreateFont();
+            boldFont.FontHeightInPoints = 11;
+            boldFont.FontName = "Calibri";
+            boldFont.Boldweight = (short)NPOI.SS.UserModel.FontBoldWeight.Bold;
+            var style = workbook.CreateCellStyle();
+            style.SetFont(boldFont);
+
+            //Se crea una celda, se le pone el estilo NEGRILLA y se le pone el valor
+            var cell = primerFilaExcel.CreateCell(0);
+            cell.CellStyle = style;
+            cell.SetCellValue("NIT");
+            //OTRA CELDA
+            cell = primerFilaExcel.CreateCell(1);
+            cell.CellStyle = style;
+            cell.SetCellValue("NUMERO UNIDAD");
+            //OTRA CELDA
+            cell = primerFilaExcel.CreateCell(2);
+            cell.CellStyle = style;
+            cell.SetCellValue("NOMBRE");
+            //OTRA CELDA
+            cell = primerFilaExcel.CreateCell(3);
+            cell.CellStyle = style;
+            cell.SetCellValue("COEFICIENTE");
+            //OTRA CELDA
+            //cell = primerFilaExcel.CreateCell(4);
+            //cell.CellStyle = style;
+            //cell.SetCellValue("DOCUMENTO");
+            ////OTRA CELDA
+            cell = primerFilaExcel.CreateCell(4);
+            cell.CellStyle = style;
+            cell.SetCellValue("VOTACION");
+
+            //Se desocupa la variables para que no ocupen espacio
+            cell = null;
+            primerFilaExcel = null;
+
+            //Se crea un for como siempre que recorre el resultado
+            for (int i = 0; i < resultado.Count; i++)
+            {
+                Dictionary<string, string> fila = resultado[i];
+                var filaExcel = sheet.CreateRow(i + 1);//La fila comienza desde la posición 1
+                filaExcel.CreateCell(0).SetCellValue(fila["nit"]);
+                filaExcel.CreateCell(1).SetCellValue(fila["numero_unidad"]);
+                filaExcel.CreateCell(2).SetCellValue(fila["nombre_completo"]);
+                filaExcel.CreateCell(3).SetCellValue(fila["coeficiente"]);
+                filaExcel.CreateCell(4).SetCellValue(fila["id_opcion"]);
+            }
+                //Falta validar si el archivo está o no abierto por otra aplicación...
+                using (var fs = new FileStream("votacion" + this.valor + ".xlsx", FileMode.Create, FileAccess.Write))
+                {
+                    workbook.Write(fs);
+                    fs.Close();
+                    //borrar anuncio cuando ya no sea necesario
+                    MessageBox.Show("El archivo se guardó en la ruta: " + fs.Name);
+
+                }
+
+            }
+        }
     }
-    }
+
 
