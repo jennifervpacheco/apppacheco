@@ -57,32 +57,42 @@ namespace apppacheco
 
         private void button5_Click(object sender, EventArgs e)
         {
-            string quorum = "";
-            ConexionPostgres conn = new ConexionPostgres();
-            string cadenaSql = "SELECT count(*) FROM modelo.asamblea_unidad_residencial WHERE nit='" + this.valor + "' AND fecha='" + this.fecha + "';";
-            double asistenciaCasoUnidades = Double.Parse(conn.consultar(cadenaSql)[0]["count"]);
-            string cadenaSql1 = "SELECT count(*) FROM modelo.unidad_residencial WHERE nit='" + this.valor + "';";
-            double registradosCasoUnidades = Double.Parse(conn.consultar(cadenaSql)[0]["count"]);
-            //double porcentaje = (100 * asistenciaCasoUnidades / registradosCasoUnidades);
-            //porcentaje = Math.Round(porcentaje, 2);
-            //quorum = (porcentaje).ToString();
 
-            cadenaSql = "SELECT sum(b.coeficiente) FROM modelo.asamblea_unidad_residencial AS a LEFT JOIN modelo.unidad_residencial AS b ON (a.numero_unidad = b.numero_unidad AND a.nit = b.nit) WHERE a.nit='" + this.valor + "' AND a.fecha='" + this.fecha + "';";
+            ConexionPostgres conn = new ConexionPostgres();
+
+            string quorum = "";
+
+            var cadenaSql = "SELECT sum(b.coeficiente) FROM modelo.asamblea_unidad_residencial AS a LEFT JOIN modelo.unidad_residencial AS b ON (a.numero_unidad = b.numero_unidad AND a.nit = b.nit) WHERE a.nit='" + this.valor + "' AND a.fecha='" + this.fecha + "';";
             double asistenciaCasoCoeficientes = Double.Parse(conn.consultar(cadenaSql)[0]["sum"]);
 
             cadenaSql = "SELECT sum(coeficiente) FROM modelo.unidad_residencial WHERE nit='" + this.valor + "';";
             double registradosCasoCoeficientes = Double.Parse(conn.consultar(cadenaSql)[0]["sum"]);
+            // double registradosCasoUnidadesdescargue = 0;
 
-            cadenaSql = "SELECT sum(b.coeficiente) FROM modelo.asamblea_unidad_residencial AS a LEFT JOIN modelo.unidad_residencial AS b ON (a.numero_unidad = b.numero_unidad AND a.nit = b.nit) WHERE a.nit='" + this.valor + "' AND a.fecha='" + this.fecha + "' and id_tipo_asistencia_final ='4';";
-            double registradosCasoUnidadesdescargue = Double.Parse(conn.consultar(cadenaSql)[0]["sum"]);
+            var cadenaSql1 = "SELECT sum(b.coeficiente) FROM modelo.asamblea_unidad_residencial AS a LEFT JOIN modelo.unidad_residencial AS b ON (a.numero_unidad = b.numero_unidad AND a.nit = b.nit) WHERE a.nit='" + this.valor + "' AND a.fecha='" + this.fecha + "' and id_tipo_asistencia_final ='4';";
+            var registro = conn.consultar(cadenaSql1);
 
-            double porcentaje = (100 * (asistenciaCasoCoeficientes - registradosCasoUnidadesdescargue) / registradosCasoCoeficientes);
-            porcentaje = Math.Round(porcentaje, 2);
-            quorum = (porcentaje).ToString();
+            if (registro[0]["sum"] != "")
+            {
+                double registradosCasoUnidadesdescargue = Double.Parse(conn.consultar(cadenaSql1)[0]["sum"]);
+                double porcentaje1 = (100 * (asistenciaCasoCoeficientes - registradosCasoUnidadesdescargue) / registradosCasoCoeficientes);
+                porcentaje1 = Math.Round(porcentaje1, 2);
+                quorum = (porcentaje1).ToString();
+                label5.Text = quorum + "%";
 
-            label5.Text = quorum + "%";
+                label5.Visible = true;
+                //string q = quorum;
+            }
+            else
+            {
+                double porcentaje = (100 * (asistenciaCasoCoeficientes) / registradosCasoCoeficientes);
+                porcentaje = Math.Round(porcentaje, 2);
+                quorum = (porcentaje).ToString();
+                label5.Text = quorum + "%";
 
-            label5.Visible = true;
+                label5.Visible = true;
+            }
+
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -246,6 +256,41 @@ namespace apppacheco
                 MessageBox.Show("El archivo se guardó en la ruta: " + fs.Name);
 
             }
+
+            
+            string quorum = "";
+
+            var cadenaSql2 = "SELECT sum(b.coeficiente) FROM modelo.asamblea_unidad_residencial AS a LEFT JOIN modelo.unidad_residencial AS b ON (a.numero_unidad = b.numero_unidad AND a.nit = b.nit) WHERE a.nit='" + this.valor + "' AND a.fecha='" + this.fecha + "';";
+            double asistenciaCasoCoeficientes = Double.Parse(conn.consultar(cadenaSql2)[0]["sum"]);
+
+            cadenaSql2 = "SELECT sum(coeficiente) FROM modelo.unidad_residencial WHERE nit='" + this.valor + "';";
+            double registradosCasoCoeficientes = Double.Parse(conn.consultar(cadenaSql2)[0]["sum"]);
+            // double registradosCasoUnidadesdescargue = 0;
+
+            var cadenaSql1 = "SELECT sum(b.coeficiente) FROM modelo.asamblea_unidad_residencial AS a LEFT JOIN modelo.unidad_residencial AS b ON (a.numero_unidad = b.numero_unidad AND a.nit = b.nit) WHERE a.nit='" + this.valor + "' AND a.fecha='" + this.fecha + "' and id_tipo_asistencia_final ='4';";
+            var registro = conn.consultar(cadenaSql1);
+
+            if (registro[0]["sum"] != "")
+            {
+                double registradosCasoUnidadesdescargue = Double.Parse(conn.consultar(cadenaSql1)[0]["sum"]);
+                double porcentaje1 = (100 * (asistenciaCasoCoeficientes - registradosCasoUnidadesdescargue) / registradosCasoCoeficientes);
+                porcentaje1 = Math.Round(porcentaje1, 2);
+                quorum = (porcentaje1).ToString();
+
+                rowExcel = sheet.GetRow(6);
+                rowExcel.CreateCell(9).SetCellValue("COEFICIENTE");
+                rowExcel.CreateCell(10).SetCellValue(quorum+"%");
+            }
+            else
+            {
+                double porcentaje = (100 * (asistenciaCasoCoeficientes) / registradosCasoCoeficientes);
+                porcentaje = Math.Round(porcentaje, 2);
+                quorum = (porcentaje).ToString();
+                rowExcel = sheet.GetRow(6);
+                rowExcel.CreateCell(9).SetCellValue("COEFICIENTE");
+                rowExcel.CreateCell(10).SetCellValue(quorum + "%");
+            }
+
         }
     }
     }
