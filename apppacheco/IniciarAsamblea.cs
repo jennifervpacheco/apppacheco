@@ -24,7 +24,10 @@ namespace apppacheco
             var resultado = conn.registrar(cadenaSql);
             if (resultado)
             {
+                nit.Text = "";
+                nombrePropiedad.Text = "";
                 MessageBox.Show("LA PROPIEDAD HA SIDO REGISTRADA CONTINUE CON EL REGISTRO DE LA ASAMBLEA");
+
             }
             else
             {
@@ -48,7 +51,11 @@ namespace apppacheco
             var resultado = conn.registrar(cadenaSql);
             if (resultado)
             {
+                nombreasamblea.Text = "";
+                horaasamblea.Text = "";
+                horafinal.Text = "";
                 MessageBox.Show("SE REALIZÓ EL REGISTRO DE LA ASAMBLEA CONTINUAR EN EL FORMULARIO PRINCIPAL");
+                
             }
             else
             {
@@ -100,6 +107,27 @@ namespace apppacheco
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            this.cargarComboBoxNitPropiedad();
+        }
+        private void cargarComboBoxNitPropiedad()
+        {
+            ConexionPostgres conn = new ConexionPostgres();
+            var resultado = conn.consultar("SELECT * FROM modelo.propiedad_horizontal; ");
+            List<Select> sl = new List<Select>();
+            foreach (Dictionary<string, string> fila in resultado)
+            {
+                int numVal = Int32.Parse(fila["nit"]);
+                // tipoasambleabix.Items.Add(new ListItem ( fila["nombre"], numVal));
+                sl.Add(new Select() { Text = fila["nit"] + "-" + fila["nombre"] , Value = fila["nit"] });
+            }
+            comboBox1.DataSource = sl;
+            comboBox1.DisplayMember = "Text";
+            //http://stackoverflow.com/questions/3063320/combobox-adding-text-and-value-to-an-item-no-binding-source 
+            MessageBox.Show("NIT actualizado");
         }
     }
 }

@@ -88,5 +88,10 @@ namespace apppacheco
             this.WindowState = FormWindowState.Maximized;
             ConexionPostgres conn = new ConexionPostgres();
         }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

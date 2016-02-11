@@ -201,7 +201,7 @@ namespace apppacheco
             primerFilaExcel = null;
             int contadornoasistio = 0, contadornoasistiof = 0;
             int contadornpoder = 0, contadornpoderf = 0;
-            int contadorpresen = 0, contadorpresenf = 0, contadorreutiro=0;
+            int contadorpresen = 0, contadorpresenf = 0, contadorreutiro = 0;
 
             //Se crea un for como siempre que recorre el resultado
             for (int i = 0; i < resultado.Count; i++)
@@ -279,16 +279,19 @@ namespace apppacheco
         private void button8_Click(object sender, EventArgs e)
         {
             ConexionPostgres conn = new ConexionPostgres();
+            var cadena = "SELECT id_pregunta from modelo.pregunta_actual where nit='" + this.valor + "'";
+            var id_pregunta = conn.consultar(cadena)[0]["id_pregunta"];
+
             XSSFWorkbook workbook = new XSSFWorkbook();
             //Se crea una hoja para el libro de la (hoja de cálculo)
             XSSFSheet sheet = (XSSFSheet)workbook.CreateSheet("Sheet1"); ;
             //Creo una variable que es similar a la que se retorna en las consultas SQL
-            var cadenaSql = "  SELECT ur.nit,  ur.numero_unidad,  ur.nombre_completo,  ur.coeficiente,  v.id_opcion FROM modelo.unidad_residencial AS ur LEFT OUTER JOIN modelo.voto AS v ON ur.numero_unidad = v.numero_unidad  WHERE ur.nit = '"+this.valor+"'   order by ur.numero_unidad asc;";
+            var cadenaSql = "  SELECT DISTINCT ur.nit,  ur.numero_unidad,  ur.nombre_completo,  ur.coeficiente,  v.id_pregunta, v.id_opcion FROM modelo.unidad_residencial AS ur  LEFT OUTER JOIN modelo.voto AS v ON ur.numero_unidad = v.numero_unidad  left outer JOIN modelo.pregunta_actual AS pa ON pa.id_pregunta=v.id_pregunta  WHERE ur.nit = '" + this.valor + "' and v.id_pregunta = '" + id_pregunta + "'  order by ur.numero_unidad asc;";
             var resultado = conn.consultar(cadenaSql);
-            var cadenasql = " SELECT p.pregunta FROM modelo.pregunta AS p LEFT OUTER JOIN modelo.voto AS v ON  p.id_pregunta = v.id_pregunta  LEFT OUTER JOIN modelo.pregunta_actual AS pa ON  pa.id_pregunta = v.id_pregunta WHERE v.nit = '"+this.valor+"'   ";
+            var cadenasql = " SELECT p.pregunta FROM modelo.pregunta AS p LEFT OUTER JOIN modelo.voto AS v ON  p.id_pregunta = '" + id_pregunta + "'  LEFT OUTER JOIN modelo.pregunta_actual AS pa ON  pa.id_pregunta = v.id_pregunta WHERE v.nit = '" + this.valor + "'   ";
             var result = conn.consultar(cadenasql);
-            var Cadenasql = "SELECT DISTINCT o.id_opcion,  o.opcion FROM modelo.opcion_pregunta AS o LEFT OUTER JOIN modelo.voto AS v ON  o.id_pregunta = v.id_pregunta    LEFT OUTER JOIN modelo.pregunta_actual AS pa ON  pa.id_pregunta = v.id_pregunta  WHERE v.nit = '"+this.valor+"'    ORDER BY o.id_opcion  ";
-            var Resultado =conn.consultar(Cadenasql);
+            var Cadenasql = "SELECT DISTINCT o.id_opcion,  o.opcion FROM modelo.opcion_pregunta AS o LEFT OUTER JOIN modelo.voto AS v ON  o.id_pregunta = '" + id_pregunta + "'    LEFT OUTER JOIN modelo.pregunta_actual AS pa ON  pa.id_pregunta = '" + id_pregunta + "'  WHERE v.nit =  '" + this.valor + "'   ORDER BY o.id_opcion ";
+            var Resultado = conn.consultar(Cadenasql);
             //Se escriben las cabeceras del reporte, primero se crea la fila
             var primerFilaExcel = sheet.CreateRow(1);
             //También creo una fuente NEGRILLA para ponerselas a esas celdas
@@ -320,6 +323,22 @@ namespace apppacheco
             cell = primerFilaExcel.CreateCell(4);
             cell.CellStyle = style;
             cell.SetCellValue("VOTACION");
+            ////OTRA CELDA
+            cell = primerFilaExcel.CreateCell(8);
+            cell.CellStyle = style;
+            cell.SetCellValue("NUMERO");
+            ////OTRA CELDA
+            cell = primerFilaExcel.CreateCell(9);
+            cell.CellStyle = style;
+            cell.SetCellValue("OPCION");
+            ////OTRA CELDA
+            cell = primerFilaExcel.CreateCell(10);
+            cell.CellStyle = style;
+            cell.SetCellValue("NUMERO DE VOTOS");
+            ////OTRA CELDA
+            cell = primerFilaExcel.CreateCell(11);
+            cell.CellStyle = style;
+            cell.SetCellValue("COEFICIENTE");
 
             //Se desocupa la variables para que no ocupen espacio
             cell = null;
@@ -329,15 +348,23 @@ namespace apppacheco
             Dictionary<string, string> fila1 = result[b];
             var filaExcel1 = sheet.CreateRow(0);//La fila comienza desde la posición 2
             filaExcel1.CreateCell(0).SetCellValue(fila1["pregunta"]);
-            
+
             //Se crea un for como siempre que recorre el resultado
-            for (int a = 0; a< Resultado.ToArray().Length; a++)
+            for (int a = 1; a < Resultado.ToArray().Length; a++)
             {
+                string quorum1 = "";
+
                 Dictionary<string, string> fila3 = Resultado[a];
                 var filaExcell = sheet.CreateRow(a + 2);//La fila comienza desde la posición 2
-                filaExcell.CreateCell(7).SetCellValue(fila3["id_opcion"]);
-                filaExcell.CreateCell(8).SetCellValue(fila3["opcion"]);
+                filaExcell.CreateCell(8).SetCellValue(fila3["id_opcion"]);
+                filaExcell.CreateCell(9).SetCellValue(fila3["opcion"]);
+                //var coef = "SELECT sum(UR.coeficiente)   FROM modelo.unidad_residencial AS ur  LEFT OUTER JOIN modelo.voto AS v ON ur.numero_unidad = v.numero_unidad  left outer JOIN modelo.pregunta_actual AS pa ON pa.id_pregunta=v.id_pregunta  WHERE ur.nit = '"+this.valor+"' and v.id_pregunta = '"+id_pregunta+"' AND v.id_opcion='"+a+"';";
+                //double registradosCasoCoeficientes1 = Double.Parse(conn.consultar(coef)[0]["sum"]);
+                //quorum1 = (registradosCasoCoeficientes1).ToString();
+
             }
+
+            //var rowExcel = sheet.GetRow(1);
 
 
             for (int i = 0; i < resultado.Count; i++)
@@ -349,16 +376,17 @@ namespace apppacheco
                 filaExcel.CreateCell(2).SetCellValue(fila["nombre_completo"]);
                 filaExcel.CreateCell(3).SetCellValue(fila["coeficiente"]);
                 filaExcel.CreateCell(4).SetCellValue(fila["id_opcion"]);
-               }
+            }
             using (var fs = new FileStream("votacion" + this.valor + ".xlsx", FileMode.Create, FileAccess.Write))
-                {
-                    workbook.Write(fs);
-                    fs.Close();
-                    //borrar anuncio cuando ya no sea necesario
-                    MessageBox.Show("El archivo se guardó en la ruta: " + fs.Name);
-                }
+            {
+                workbook.Write(fs);
+                fs.Close();
+                //borrar anuncio cuando ya no sea necesario
+                MessageBox.Show("El archivo se guardó en la ruta: " + fs.Name);
             }
         }
+
     }
+}
 
 

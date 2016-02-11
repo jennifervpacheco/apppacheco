@@ -57,10 +57,11 @@ namespace apppacheco
             {
                 var codigo = fila["nit"] + "-" + fila["numero_unidad"]+"+";
                 string barcode = codigo;
-                Bitmap bitm = new Bitmap(barcode.Length * 30, 90);
+                //Bitmap bitm = new Bitmap(barcode.Length * 30, 90);
+                Bitmap bitm = new Bitmap(barcode.Length * 30, 100);
                 using (Graphics graphic = Graphics.FromImage(bitm))
                 {
-                    Font newfont = new Font("IDAutomationHC39M", 15);
+                    Font newfont = new Font("c39hrp48dhtt", 55);
                     PointF point = new PointF(2f, 2f);
                     SolidBrush black = new SolidBrush(Color.Black);
                     SolidBrush white = new SolidBrush(Color.White);

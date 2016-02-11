@@ -204,5 +204,18 @@ namespace apppacheco
         {
 
         }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            ConexionPostgres conn1 = new ConexionPostgres();
+            var cadenaSql = string.Format("SELECT * FROM modelo.asamblea; ");
+            var resultado = conn1.registrar(cadenaSql);
+            if (resultado)
+            {
+                MessageBox.Show("verificada la conexion");
+            }
+
+
+        }
     }
 }
