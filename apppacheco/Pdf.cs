@@ -52,8 +52,8 @@ namespace apppacheco
             Document document = new Document();
             PdfDocument pdfDocument = new PdfDocument();
             document.DefaultPageSetup.PageFormat = PageFormat.A4;
-            document.DefaultPageSetup.LeftMargin = "2cm";
-            document.DefaultPageSetup.TopMargin = "2cm";
+            document.DefaultPageSetup.LeftMargin = "1cm";
+            document.DefaultPageSetup.TopMargin = "1cm";
             setDocumentStyle(ref document);
             string footerText = "LISTADO DE CODIGO DE BARRAS POR PROPIETARIO CON NIT Y NUMERO DE UNIDAD ";
             setDocumentHeaders2(
@@ -63,6 +63,10 @@ namespace apppacheco
             foreach (string foto in fotos)
             {
                 document.LastSection.AddImage(foto);
+                
+              //document.Section.AddImage(foto);
+              //deja codigo de barras por pagina document.AddSection();
+              //duplica la imagendocument.LastSection.AddImage(foto);
             }
             PdfDocumentRenderer pdfDocumentRenderer = new PdfDocumentRenderer(false, PdfFontEmbedding.Always);
             pdfDocumentRenderer.Document = document;
@@ -79,7 +83,7 @@ namespace apppacheco
             //section.PageSetup.HeaderDistance = "1cm";
             document.DefaultPageSetup.HeaderDistance = "1cm";
             //document.DefaultPageSetup.TopMargin = "2.5cm";
-            document.DefaultPageSetup.TopMargin = "3.5cm";
+            document.DefaultPageSetup.TopMargin = "1.5cm";
             section.PageSetup.StartingNumber = 1;
             HeaderFooter headerPrimaryPage = section.Headers.Primary;
             Table headerTable = headerPrimaryPage.AddTable();

@@ -32,12 +32,10 @@ namespace apppacheco
             IniciarAsamblea miformulario = new IniciarAsamblea();
             miformulario.Show();
         }
-
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
          private string buscarDoc()
         {
             string file = "";
@@ -48,7 +46,6 @@ namespace apppacheco
             }
             return file;
         }
-
         private void button2_Click(object sender, EventArgs e)
         {
             string ruta = this.buscarDoc();
@@ -63,17 +60,13 @@ namespace apppacheco
                 MessageBox.Show("El archivo está siendo usado por otro programa. Asegurese de haber seleccionado el archivo correcto.");
                 return;
             }
-
             XSSFWorkbook wb = new XSSFWorkbook(fs);
-
             string nombreHoja = "";
             for (int i = 0; i < wb.Count; i++)
             {
                 nombreHoja = wb.GetSheetAt(i).SheetName;
             }
-
             XSSFSheet sheet = (XSSFSheet)wb.GetSheet(nombreHoja);
-
             try
             {
                 for (int row = 1; row <= sheet.LastRowNum; row++)
@@ -110,21 +103,24 @@ namespace apppacheco
                                 documento
                             );
                         var resultado = conn.registrar(cadenaSql);
-                        if(!resultado)//Falló la consulta
+                        if (!resultado)//Falló la consulta
                         {
-                            MessageBox.Show("El registro NIT:"+nit
+                            MessageBox.Show("El registro NIT:" + nit
                                 + ", Número Unidad:" + numero_unidad
                                 + ", Nombre Completo:" + nombre_completo
                                 + ", Coeficiente:" + coeficiente
-                                + ", Número Documento:" + documento 
-                                + " ,no pudo ser completado de manera exitosa, revise los datos (están mal o ya existen).");
+                                + ", Número Documento:" + documento
+                                + " ,no pudo ser completado de manera exitosa, revise los datos (están mal o ya existen o se encontro elemento en blanco).");
                             MessageBox.Show(cadenaSql);
                             return;
                         }
                     }
-                }
+                    else
+                    {
+                        MessageBox.Show("realizado");
+                    }
 
-                //MessageBoxEx.Show("Datos cargados correctamente",2000);
+                }
                 MessageBox.Show("Datos cargados correctamente.");
             }
             catch
@@ -137,25 +133,19 @@ namespace apppacheco
  
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            //this.TopMost = true;
-            //this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             this.cargarComboBoxNitPropiedad();
+
         }
-
-        
-
         private void button4_Click(object sender, EventArgs e)
         {
             GenerarCodigo cod = new GenerarCodigo();
             cod.Show();
         }
-
         private void button5_Click(object sender, EventArgs e)
         {
             Select sl = comboBox1.SelectedItem as Select;
@@ -173,13 +163,11 @@ namespace apppacheco
                 op.Show();
             }
          }
-
         private void button6_Click(object sender, EventArgs e)
         {
             ConfiguracionServidorBaseDatos ser = new ConfiguracionServidorBaseDatos();
             ser.Show();
         }
-
         private void button7_Click(object sender, EventArgs e)
         {
             this.cargarComboBoxNitPropiedad();
@@ -199,12 +187,9 @@ namespace apppacheco
             comboBox1.DisplayMember = "Text";
             //http://stackoverflow.com/questions/3063320/combobox-adding-text-and-value-to-an-item-no-binding-source 
         }
-
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
-
         private void button8_Click(object sender, EventArgs e)
         {
             ConexionPostgres conn1 = new ConexionPostgres();
@@ -214,8 +199,6 @@ namespace apppacheco
             {
                 MessageBox.Show("verificada la conexion");
             }
-
-
         }
     }
 }

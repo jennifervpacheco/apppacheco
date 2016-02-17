@@ -27,7 +27,6 @@ namespace apppacheco
                 nit.Text = "";
                 nombrePropiedad.Text = "";
                 MessageBox.Show("LA PROPIEDAD HA SIDO REGISTRADA CONTINUE CON EL REGISTRO DE LA ASAMBLEA");
-
             }
             else
             {
@@ -55,14 +54,12 @@ namespace apppacheco
                 horaasamblea.Text = "";
                 horafinal.Text = "";
                 MessageBox.Show("SE REALIZÓ EL REGISTRO DE LA ASAMBLEA CONTINUAR EN EL FORMULARIO PRINCIPAL");
-                
             }
             else
             {
                 MessageBox.Show("NO SE REALIZÓ EL REGISTRO DE LA ASAMBLEA");
             }
         }
-
 
         private void IniciarAsamblea_Load(object sender, EventArgs e)
         {
@@ -92,7 +89,6 @@ namespace apppacheco
             }
             comboBox1.DataSource = sl1;
             comboBox1.DisplayMember = "Text";
-
         }
 
         private void tipoasambleabix_SelectedIndexChanged(object sender, EventArgs e)

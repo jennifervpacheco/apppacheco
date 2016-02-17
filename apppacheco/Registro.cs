@@ -16,23 +16,34 @@ namespace apppacheco
     {
         private bool entro = false;
         private string fecha;
-        TextBox TextBox1 = new TextBox();
+      // TextBox TextBox1 = new TextBox();
 
         public Registro(string fecha)
         {
+            //InitializeComponent();
+            //this.fecha = fecha;
+            //this.AutoSize = true;
+            //FlowLayoutPanel panel = new FlowLayoutPanel();
+            //panel.AutoSize = true;
+            //panel.FlowDirection = FlowDirection.TopDown;
+            //panel.Controls.Add(TextBox1);
+            //this.Controls.Add(panel);
+            //this.KeyPreview = true;
+            //this.KeyPress +=
+            //new KeyPressEventHandler(Registro_KeyPress);
+            //TextBox1.KeyPress +=
+            //new KeyPressEventHandler(TextBox1_KeyPress);
             InitializeComponent();
             this.fecha = fecha;
             this.AutoSize = true;
             FlowLayoutPanel panel = new FlowLayoutPanel();
             panel.AutoSize = true;
             panel.FlowDirection = FlowDirection.TopDown;
-            panel.Controls.Add(TextBox1);
             this.Controls.Add(panel);
             this.KeyPreview = true;
             this.KeyPress +=
             new KeyPressEventHandler(Registro_KeyPress);
-            TextBox1.KeyPress +=
-            new KeyPressEventHandler(TextBox1_KeyPress);
+
         }
         void Registro_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -50,8 +61,8 @@ namespace apppacheco
                 if (e.KeyChar == 49)
                 {
                     string uni = textos[1].Remove(textos[1].Length - 1);
-                    MessageBox.Show("UNIDAD " + textos[1] + "LA OPCION SELECTIONADA FUE: '" +
-                    e.KeyChar.ToString() + "'PRESENCIAL .");
+                    //MessageBox.Show("UNIDAD " + textos[1] + "LA OPCION SELECTIONADA FUE: '" + e.KeyChar.ToString() + "'PRESENCIAL .");
+                    label3.Text=("UNIDAD " + textos[1] + "LA OPCION SELECTIONADA FUE: '" + e.KeyChar.ToString() + "'PRESENCIAL .");
                     var cadenaSql = "INSERT INTO modelo.asamblea_unidad_residencial(nit, numero_unidad, fecha, id_tipo_asistencia_inicial) VALUES ('" + textos[0] + "','" + uni + "','" + this.fecha + "','1');";
                     conn.registrar(cadenaSql);
                 }

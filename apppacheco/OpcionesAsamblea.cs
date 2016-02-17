@@ -58,30 +58,43 @@ namespace apppacheco
         private void button5_Click(object sender, EventArgs e)
         {
             ConexionPostgres conn = new ConexionPostgres();
-            string quorum = "";
-            var cadenaSql = "SELECT sum(b.coeficiente) FROM modelo.asamblea_unidad_residencial AS a LEFT JOIN modelo.unidad_residencial AS b ON (a.numero_unidad = b.numero_unidad AND a.nit = b.nit) WHERE a.nit='" + this.valor + "' AND a.fecha='" + this.fecha + "';";
+           //var cadenaSqlñ = "SELECT sum(coeficiente) FROM modelo.unidad_residencial WHERE nit='" + this.valor + "';";
+           // var result = conn.consultar(cadenaSqlñ);
+           
+            //if (System.Convert.ToString(asistenciaCasoCoeficientes) != "11.645") {
+                string quorum = "";
+                var cadenaSql = "SELECT sum(b.coeficiente) FROM modelo.asamblea_unidad_residencial AS a LEFT JOIN modelo.unidad_residencial AS b ON (a.numero_unidad = b.numero_unidad AND a.nit = b.nit) WHERE a.nit='" + this.valor + "' AND a.fecha='" + this.fecha + "';";
             double asistenciaCasoCoeficientes = Double.Parse(conn.consultar(cadenaSql)[0]["sum"]);
+
             cadenaSql = "SELECT sum(coeficiente) FROM modelo.unidad_residencial WHERE nit='" + this.valor + "';";
-            double registradosCasoCoeficientes = Double.Parse(conn.consultar(cadenaSql)[0]["sum"]);
-            var cadenaSql1 = "SELECT sum(b.coeficiente) FROM modelo.asamblea_unidad_residencial AS a LEFT JOIN modelo.unidad_residencial AS b ON (a.numero_unidad = b.numero_unidad AND a.nit = b.nit) WHERE a.nit='" + this.valor + "' AND a.fecha='" + this.fecha + "' and id_tipo_asistencia_final ='4';";
-            var registro = conn.consultar(cadenaSql1);
-            if (registro[0]["sum"] != "")
-            {
-                double registradosCasoUnidadesdescargue = Double.Parse(conn.consultar(cadenaSql1)[0]["sum"]);
-                double porcentaje1 = (100 * (asistenciaCasoCoeficientes - registradosCasoUnidadesdescargue) / registradosCasoCoeficientes);
-                porcentaje1 = Math.Round(porcentaje1, 2);
-                quorum = (porcentaje1).ToString();
-                label5.Text = quorum + "%";
-                label5.Visible = true;
-            }
-            else
-            {
-                double porcentaje = (100 * (asistenciaCasoCoeficientes) / registradosCasoCoeficientes);
-                porcentaje = Math.Round(porcentaje, 2);
-                quorum = (porcentaje).ToString();
-                label5.Text = quorum + "%";
-                label5.Visible = true;
-            }
+                double registradosCasoCoeficientes = Double.Parse(conn.consultar(cadenaSql)[0]["sum"]);
+                var cadenaSql1 = "SELECT sum(b.coeficiente) FROM modelo.asamblea_unidad_residencial AS a LEFT JOIN modelo.unidad_residencial AS b ON (a.numero_unidad = b.numero_unidad AND a.nit = b.nit) WHERE a.nit='" + this.valor + "' AND a.fecha='" + this.fecha + "' and id_tipo_asistencia_final ='4';";
+                var registro = conn.consultar(cadenaSql1);
+
+                if (registro[0]["sum"] != "")
+                {
+                    double registradosCasoUnidadesdescargue = Double.Parse(conn.consultar(cadenaSql1)[0]["sum"]);
+                    double porcentaje1 = (100 * (asistenciaCasoCoeficientes - registradosCasoUnidadesdescargue) / registradosCasoCoeficientes);
+                    porcentaje1 = Math.Round(porcentaje1, 2);
+                    quorum = (porcentaje1).ToString();
+                    label5.Text = quorum + "%";
+                    label5.Visible = true;
+                }
+                else
+                {
+                    double porcentaje = (100 * (asistenciaCasoCoeficientes) / registradosCasoCoeficientes);
+                    porcentaje = Math.Round(porcentaje, 2);
+                    quorum = (porcentaje).ToString();
+                    label5.Text = quorum + "%";
+                    label5.Visible = true;
+                }
+        //    }
+        //    else
+        //    {
+        //        label5.Text = "0%";
+        //        label5.Visible = true;
+
+        //    }
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -267,7 +280,11 @@ namespace apppacheco
             rowExcel.CreateCell(8).SetCellValue(quorum1 + "%");
             rowExcel.CreateCell(10).SetCellValue(quorum + "%");
             //Falta validar si el archivo está o no abierto por otra aplicación...
-            using (var fs = new FileStream("lista_asistencia" + this.valor + ".xlsx", FileMode.Create, FileAccess.Write))
+            var cadenaSql11 = "select nombre   from modelo.propiedad_horizontal  where nit='" + this.valor + "' ";
+            var nombre1 = conn.consultar(cadenaSql11);
+            var nombre = conn.consultar(cadenaSql11)[0]["nombre"];
+
+            using (var fs = new FileStream("lista_asistencia-" + nombre + ".xlsx", FileMode.Create, FileAccess.Write))
             {
                 workbook.Write(fs);
                 fs.Close();
